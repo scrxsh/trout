@@ -1,3 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+@font-face {
+    font-family: "Open Sans";
+    src: 
+        url(../public/assets/fonts/open-sans.woff2) format("woff2"),
+        url(../public/assets/fonts/open-sans.ttf) format("truetype");
+    font-display: swap;
+}
+
+:root {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
