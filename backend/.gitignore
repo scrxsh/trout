@@ -1,9 +1,0 @@
-# IntelliJ IDEA
-.idea/
-
-# Compilados
-target/
-src/test/
-
-#Carpetas para no tener problemas de seguridad
-resources/jwtKeys/

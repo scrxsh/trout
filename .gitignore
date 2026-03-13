@@ -1,0 +1,65 @@
+# Archivos generales
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+
+# IDEs (VSCode e IntellJ)
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.project
+.classpath
+.settings/
+*.launch
+
+# Java/Spring Boot
+target/
+build/
+out/
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+
+# Tests
+src/test/
+
+# Archivos de seguridad
+jwtKeys/
+**/resources/jwtKeys/
+**/secrets/
+**/*.pem
+**/*.key
+**/*.p12
+**/*.jks
+
+# Angular y Node
+node_modules/
+dist/
+out-tsc/
+tmp/
+coverage/
+npm-debug.log
+yarn-error.log
+.angular/cache
+
+# Angular build
+frontend/dist/
+frontend/.angular/
+
+# Archivos de entorno
+.env
+.env.local
+.env.*
+
