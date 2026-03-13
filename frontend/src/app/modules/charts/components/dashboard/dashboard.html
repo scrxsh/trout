@@ -1,0 +1,39 @@
+<div class="dashboard-container">
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; width: 100%;">
+    
+    @if (isBrowser) {
+        <div class="chart-card" style="flex: 1; min-width: 450px;" id="barras">
+        <h3 style="margin-bottom: 20px; color: #333;">Estadísticas Generales</h3>
+        
+        @defer (on timer(50ms)) {
+            <div class="chart-wrapper">
+            <canvas baseChart
+                [data]="barChartData"
+                [options]="chartOptions"
+                [type]="barChartType">
+            </canvas>
+            </div>
+        } @placeholder {
+            <div class="chart-wrapper"></div>
+        }
+        </div>
+
+        <div class="chart-card" style="flex: 1; min-width: 350px;" id="pastel">
+        <h3 style="margin-bottom: 20px; color: #333;">Distribución de Ventas</h3>
+        
+        @defer (on timer(50ms)) {
+            <div class="chart-wrapper">
+            <canvas baseChart
+                [data]="pieChartData"
+                [options]="chartOptions"
+                [type]="pieChartType">
+            </canvas>
+            </div>
+        } @placeholder {
+            <div class="chart-wrapper"></div>
+        }
+        </div>
+    }
+
+    </div>
+</div>

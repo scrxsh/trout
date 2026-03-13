@@ -1,0 +1,16 @@
+.dashboard-container {
+  padding: 20px;
+  background-color: #f4f6f9;
+}
+
+.chart-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.chart-wrapper {
+  height: 350px;
+  width: 100%;
+}

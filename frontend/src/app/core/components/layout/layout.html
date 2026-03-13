@@ -1,0 +1,31 @@
+<div class="layout">
+  <header class="header">
+    <button class="toggle-btn" (click)="toggleSidebar()">
+      <span class="material-icons">menu</span>
+    </button>
+    <div class="title">Dashboard</div>
+    <a class="user" (click)="cerrarSesion()">Cerrar sesión</a>
+  </header>
+
+  <div class="body">
+    <aside class="sidebar" [class.collapsed]="collapsed()">
+      <nav>
+        <a routerLink="/dashboard" routerLinkActive="active">
+          <span class="material-icons icon">dashboard</span>
+          <span class="label" [class.hide]="collapsed()">Dashboard</span>
+        </a>
+        <a routerLink="/clientes" routerLinkActive="active">
+          <span class="material-icons icon">bar_chart</span>
+          <span class="label" [class.hide]="collapsed()">Reportes</span>
+        </a>
+        <a routerLink="/settings" routerLinkActive="active">
+          <span class="material-icons icon">settings</span>
+          <span class="label" [class.hide]="collapsed()">Configuración</span>
+        </a>
+      </nav>
+    </aside>
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

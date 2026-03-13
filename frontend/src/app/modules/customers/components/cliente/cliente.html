@@ -1,0 +1,32 @@
+
+<h1>Lista de Clientes Conectados API </h1>
+    
+    <table border="1" style="width: 100%; text-align: left;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+          <th>Dirección</th>
+          <th>Documento</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (c of clienteService.clientes(); track c.id) {
+          <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.telefono }}</td>
+            <td>{{ c.direccion }}</td>
+            <td>{{ c.n_documento }}</td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="6">Cargando clientes o lista vacía...</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+<router-outlet></router-outlet>
