@@ -34,6 +34,8 @@ public class JWTUtilityServiceImpl implements IJWTUtilityService {
     @Value("classpath:jwtKeys/public_key.pem")
     private Resource publicKeyResource;
 
+    //Expiracion del token basicamente es pasar de dias a milisegundos que maneja date
+    private static final long expirationToken = 7*24*60*60*1000;
 
     @Override
     public String generateJWT(Long idUsuario) throws IOException, NoSuchAlgorithmException, InvalidKeySpecException, JOSEException {
@@ -45,7 +47,7 @@ public class JWTUtilityServiceImpl implements IJWTUtilityService {
         JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                 .subject(idUsuario.toString())
                 .issueTime(now)
-                .expirationTime(new Date(now.getTime() + 604800000))
+                .expirationTime(new Date(now.getTime() + expirationToken))
                 .build();
 
         SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.RS256), claimsSet);
