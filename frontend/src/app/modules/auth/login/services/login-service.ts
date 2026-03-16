@@ -25,7 +25,7 @@ export class LoginService {
 
   //CRUD para manejar la sesión
   guardarToken(token: string){
-    //Guardar la cookie en el SSR por 1 dia, accesible bidireccionalmente
+    //Guardar la cookie en el SSR por 7 dias, accesible bidireccionalmente
     this.cookieService.set('jwt_token', token, 7, '/');
   }
 
