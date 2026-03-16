@@ -29,19 +29,19 @@ export class Dashboard {
   public pieChartType: ChartType = 'pie';
 
   public barChartData: ChartData<'bar'> = {
-    labels: ['Ventas', 'Clientes', 'Pedidos', 'Productos', 'Ingresos', 'Usuarios', 'Visitas'],
+    labels: ['Boyacá Alto', 'Versalles', 'San Mateo', 'Barrio Obrero', 'Jardin del Norte', 'Zonas Rurales', 'Belencito'],
     datasets: [{
-      data: [400, 250, 320, 180, 500, 200, 350],
-      label: 'Estadísticas',
+      data: [400, 250, 320, 180, 200, 500, 350],
+      label: 'Reportes',
       backgroundColor: ['#598BFF', '#FFC94D', '#42AAFF', '#FF708D', '#2CE69B', '#6200EE', '#FFA919'],
     }]
   };
 
   public pieChartData: ChartData<'pie'> = {
-    labels: ['Ventas', 'Clientes', 'Pedidos', 'Productos', 'Ingresos'],
+    labels: ['Virales', 'Bacterianas', 'Cronicas', 'Autoinmunes'],
     datasets: [{
-      data: [300, 150, 200, 80, 450],
-      backgroundColor: ['#598BFF', '#FFC94D', '#42AAFF', '#FF708D', '#2CE69B'],
+      data: [300, 150, 200, 80],
+      backgroundColor: ['#935BAB', '#FFC94D', '#42AAFF', '#FF708D'],
     }]
   };
 

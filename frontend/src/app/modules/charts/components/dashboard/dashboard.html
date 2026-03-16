@@ -3,7 +3,7 @@
     
     @if (isBrowser) {
         <div class="chart-card" style="flex: 1; min-width: 450px;" id="barras">
-        <h3 style="margin-bottom: 20px; color: #333;">Estadísticas Generales</h3>
+        <h3 style="margin-bottom: 20px; color: #333;">Reportes por barrios</h3>
         
         @defer (on timer(50ms)) {
             <div class="chart-wrapper">
@@ -19,7 +19,7 @@
         </div>
 
         <div class="chart-card" style="flex: 1; min-width: 350px;" id="pastel">
-        <h3 style="margin-bottom: 20px; color: #333;">Distribución de Ventas</h3>
+        <h3 style="margin-bottom: 20px; color: #333;">Distribución de Enfermedades</h3>
         
         @defer (on timer(50ms)) {
             <div class="chart-wrapper">
@@ -34,7 +34,7 @@
         }
         </div>
         <div class="chart-card" style="flex: 1; min-width: 350px;" id="mapa">
-            <h3 style="margin-bottom: 20px; color: #333;">Mapa de calor de contagios</h3>
+            <h3 style="margin-bottom: 20px; color: #333;">Mapa de calor de contagios de Enfermedades virales</h3>
             <app-heatmap></app-heatmap>
         </div>
     }
