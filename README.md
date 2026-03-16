@@ -9,7 +9,7 @@ Este proyecto fue generado utilizando [Angular CLI](https://github.com/angular/a
 Para instalar todas las librerias necesarias, ejecuta:
 
 ```bash
-npm install -i
+npm i -i
 ```
 Para iniciar un servidor de desarrollo local, ejecuta:
 ```bash
