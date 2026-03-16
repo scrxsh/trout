@@ -12,13 +12,13 @@
 
 .header {
   height: 70px;
-  background: #256140;
+  background: #1a4480;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  color: white;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(181, 224, 253, 0.15);
 }
 
 .title {
@@ -62,8 +62,8 @@
 
 .sidebar {
   width: 240px;
-  background: #EBEBEB;
-  border-right: 1px solid #e0e0e0;
+  background: #f1f3f6;
+  border-right: 1px solid #f1f3f6;
   transition: width 0.3s ease;
   padding: 20px 10px;
 }
@@ -90,16 +90,16 @@ nav a {
 }
 
 nav a:hover {
-  background: #25614015;
+  background: #253d6115;
 }
 
 nav a.active {
-  background: #25614015; 
-  color: #256140;
+  background: #253d6115; 
+  color: #0b5694;
 }
 
 nav a.active .material-icons {
-  color: #256140;
+  color: #0b5694;
 }
 
 .icon {

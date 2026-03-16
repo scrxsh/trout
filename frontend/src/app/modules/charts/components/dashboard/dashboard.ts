@@ -3,12 +3,14 @@ import { isPlatformBrowser } from '@angular/common';
 import { ChartConfiguration, ChartData, ChartType, Chart, registerables } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { driver } from "driver.js";
-import { Layout } from '../../../../core/components/layout/layout';
+import { Heatmap } from '../heatmap/heatmap';
+
+
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-dashboard',
-  imports: [BaseChartDirective],
+  imports: [BaseChartDirective, Heatmap],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
