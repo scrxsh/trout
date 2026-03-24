@@ -7,6 +7,7 @@ import { Dashboard } from './modules/charts/components/dashboard/dashboard';
 import { loginGuard } from './core/guards/login-guard';
 import { loginPublicGuard } from './core/guards/login-guard-public';
 import { Layout } from './core/components/layout/layout';
+import { Events } from './modules/warnings/events/events';
 
 export const routes: Routes = [
     {
@@ -24,8 +25,8 @@ export const routes: Routes = [
                 component: Dashboard
             },
             {
-                path: 'clientes',
-                component: Cliente
+                path: 'alertas',
+                component: Events
             }
         ]
     }

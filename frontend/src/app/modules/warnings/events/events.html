@@ -1,0 +1,371 @@
+<!-- ══════════════════════════════════════════════════════════
+     ALERTAS Y PREVENCIÓN — Tailwind + Material Icons
+     ══════════════════════════════════════════════════════════ -->
+<section class="flex flex-col gap-6 p-6 min-h-screen">
+
+  <!-- ── Header ─────────────────────────────────────────── -->
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800 tracking-tight">Alertas y Prevención</h1>
+      <p class="text-sm text-gray-500 mt-0.5">Gestión de alertas y prevención comunitaria</p>
+    </div>
+    <button
+      (click)="openNew()"
+      class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white
+            bg-red-500 hover:bg-red-600 active:bg-red-700
+            shadow-md shadow-red-200 transition-all duration-150">
+      <span class="material-icons text-base leading-none">add</span>
+      Nueva Alerta
+    </button>
+  </div>
+
+  <!-- ── Featured Alert Cards ───────────────────────────── -->
+  <div class="flex flex-col gap-3">
+    @for (alert of featuredAlerts(); track alert.id) {
+      @if (alert.type === 'Critica') {
+        <div class="rounded-xl p-4 shadow-sm bg-red-500 text-white">
+          <div class="flex items-center gap-3 mb-1">
+            <div class="flex items-center justify-center w-8 h-8 rounded-full bg-red-700/40 shrink-0">
+              <span class="material-icons text-lg leading-none">warning</span>
+            </div>
+            <h3 class="flex-1 font-semibold text-sm leading-snug">{{ alert.title }}</h3>
+            <span class="shrink-0 text-xs font-bold px-2.5 py-0.5 rounded-full bg-white/25 text-white">
+              {{ alert.status }}
+            </span>
+          </div>
+          <p class="text-xs opacity-90 ml-11 mb-2">{{ alert.description }}</p>
+          <div class="flex gap-1.5 text-xs opacity-70 ml-11 font-medium">
+            <span>{{ alert.date }}</span><span>• {{ alert.status }}</span>
+          </div>
+        </div>
+      }
+
+      @if (alert.type === 'Advertencia') {
+        <div class="rounded-xl p-4 shadow-sm bg-yellow-400 text-yellow-900">
+          <div class="flex items-center gap-3 mb-1">
+            <div class="flex items-center justify-center w-8 h-8 rounded-full bg-yellow-600/25 shrink-0">
+              <span class="material-icons text-lg leading-none">bolt</span>
+            </div>
+            <h3 class="flex-1 font-semibold text-sm leading-snug">{{ alert.title }}</h3>
+            <span class="shrink-0 text-xs font-bold px-2.5 py-0.5 rounded-full bg-yellow-700/20 text-yellow-900">
+              {{ alert.status }}
+            </span>
+          </div>
+          <p class="text-xs opacity-80 ml-11 mb-2">{{ alert.description }}</p>
+          <div class="flex gap-1.5 text-xs opacity-60 ml-11 font-medium">
+            <span>{{ alert.date }}</span><span>• {{ alert.status }}</span>
+          </div>
+        </div>
+      }
+
+      @if (alert.type === 'Informativa') {
+        <div class="rounded-xl p-4 shadow-sm bg-emerald-500 text-white">
+          <div class="flex items-center gap-3 mb-1">
+            <div class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-700/30 shrink-0">
+              <span class="material-icons text-lg leading-none">info</span>
+            </div>
+            <h3 class="flex-1 font-semibold text-sm leading-snug">{{ alert.title }}</h3>
+            <span class="shrink-0 text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-700/25 text-teal-900">
+              {{ alert.status }}
+            </span>
+          </div>
+          <p class="text-xs opacity-90 ml-11 mb-2">{{ alert.description }}</p>
+          <div class="flex gap-1.5 text-xs opacity-70 ml-11 font-medium">
+            <span>{{ alert.date }}</span><span>• {{ alert.status }}</span>
+          </div>
+        </div>
+      }
+
+    }
+  </div>
+
+  <!-- ── History Table ──────────────────────────────────── -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+
+    <!-- Topbar -->
+    <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+      <h2 class="text-base font-semibold text-gray-800">Historial de Alertas</h2>
+      <div class="flex items-center gap-2">
+
+        <!-- Search -->
+        <div class="relative flex items-center">
+          <span class="material-icons absolute left-2.5 text-base text-gray-400 pointer-events-none select-none">search</span>
+          <input
+            type="text"
+            placeholder="Buscar alertas..."
+            [value]="searchTerm()"
+            (input)="searchTerm.set($any($event.target).value)"
+            class="pl-9 pr-3 py-1.5 w-48 rounded-lg border border-gray-200 text-sm
+                   bg-gray-50 placeholder-gray-400 text-gray-700
+                   focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400
+                   transition-all"
+          />
+        </div>
+
+        <!-- Filter toggle -->
+        <button
+          (click)="showFilterPanel.set(!showFilterPanel())"
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200
+                 text-sm text-gray-600 bg-white hover:bg-gray-50
+                 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all">
+          <span class="material-icons text-base leading-none">filter_list</span>
+          Filtros
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Filter panel -->
+    @if (showFilterPanel()) {
+      <div class="flex flex-wrap items-end gap-4 px-5 py-3 bg-gray-50 border-b border-gray-100">
+        <div class="flex flex-col gap-1">
+          <label class="text-xs font-medium text-gray-500 uppercase tracking-wide">Tipo</label>
+          <select
+            [value]="filterType()"
+            (change)="filterType.set($any($event.target).value)"
+            class="px-3 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-700 bg-white
+                   focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400">
+            <option value="Todas">Todas</option>
+            @for (t of alertTypes; track t) {
+              <option [value]="t">{{ t }}</option>
+            }
+          </select>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label class="text-xs font-medium text-gray-500 uppercase tracking-wide">Estado</label>
+          <select
+            [value]="filterStatus()"
+            (change)="filterStatus.set($any($event.target).value)"
+            class="px-3 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-700 bg-white
+                   focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400">
+            <option value="Todas">Todas</option>
+            @for (s of alertStatuses; track s) {
+              <option [value]="s">{{ s }}</option>
+            }
+          </select>
+        </div>
+        <button
+          (click)="filterType.set('Todas'); filterStatus.set('Todas'); showFilterPanel.set(false)"
+          class="px-3 py-1.5 rounded-lg text-xs font-medium text-red-500 border border-red-200
+                 hover:bg-red-50 transition-all">
+          Limpiar filtros
+        </button>
+      </div>
+    }
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-100">
+            <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Fecha</th>
+            <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Tipo</th>
+            <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Descripción</th>
+            <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Estado</th>
+            <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (alert of filteredAlerts(); track alert.id) {
+            <tr class="border-b border-gray-50 hover:bg-blue-50/30 transition-colors">
+
+              <!-- Fecha -->
+              <td class="px-5 py-3 text-gray-500 text-xs font-mono whitespace-nowrap align-middle">
+                {{ alert.date }}
+              </td>
+
+              <!-- Tipo -->
+              <td class="px-5 py-3 align-middle">
+                @if (alert.type === 'Critica') {
+                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-700">
+                    <span class="material-icons text-xs leading-none">warning</span>Crítica
+                  </span>
+                }
+                @if (alert.type === 'Advertencia') {
+                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-700">
+                    <span class="material-icons text-xs leading-none">bolt</span>Advertencia
+                  </span>
+                }
+                @if (alert.type === 'Informativa') {
+                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
+                    <span class="material-icons text-xs leading-none">info</span>Informativa
+                  </span>
+                }
+              </td>
+
+              <!-- Descripción -->
+              <td class="px-5 py-3 text-gray-600 max-w-xs align-middle">{{ alert.description }}</td>
+
+              <!-- Estado -->
+              <td class="px-5 py-3 align-middle">
+                @if (alert.status === 'Activa') {
+                  <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-700">Activa</span>
+                }
+                @if (alert.status === 'Programada') {
+                  <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-100 text-teal-700">Programada</span>
+                }
+                @if (alert.status === 'Resuelta') {
+                  <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">Resuelta</span>
+                }
+                @if (alert.status === 'Completada') {
+                  <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700">Completada</span>
+                }
+              </td>
+
+              <!-- Acciones -->
+              <td class="px-5 py-3 align-middle">
+                <div class="flex items-center gap-1">
+                  <button
+                    title="Editar"
+                    (click)="openEdit(alert)"
+                    class="p-1.5 rounded-lg text-blue-400 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                    <span class="material-icons text-base leading-none">visibility</span>
+                  </button>
+                  <button
+                    title="Eliminar"
+                    (click)="deleteAlert(alert.id)"
+                    class="p-1.5 rounded-lg text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors">
+                    <span class="material-icons text-base leading-none">delete</span>
+                  </button>
+                </div>
+              </td>
+
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="5" class="text-center text-gray-400 py-10 italic text-sm">
+                No se encontraron alertas.
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     MODAL — Nueva / Editar Alerta
+     ══════════════════════════════════════════════════════════ -->
+@if (showModal()) {
+  <div
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+    (click)="closeModal()">
+
+    <div
+      class="w-full max-w-lg mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden"
+      (click)="$event.stopPropagation()">
+
+      <!-- Header -->
+      <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+        <h2 class="text-lg font-bold text-gray-800">
+          {{ editingAlert() ? 'Editar Alerta' : 'Nueva Alerta' }}
+        </h2>
+        <button
+          (click)="closeModal()"
+          class="p-1.5 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+          <span class="material-icons text-xl leading-none">close</span>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="px-6 py-5 flex flex-col gap-4">
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm font-medium text-gray-700">Título *</label>
+          <input
+            type="text"
+            placeholder="Título de la alerta"
+            [value]="form().title"
+            (input)="patchForm({ title: $any($event.target).value })"
+            class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm text-gray-700
+                   placeholder-gray-400 bg-white
+                   focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition-all"
+          />
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm font-medium text-gray-700">Descripción *</label>
+          <textarea
+            rows="3"
+            placeholder="Descripción detallada..."
+            [value]="form().description"
+            (input)="patchForm({ description: $any($event.target).value })"
+            class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm text-gray-700
+                   placeholder-gray-400 bg-white resize-none
+                   focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition-all">
+          </textarea>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm font-medium text-gray-700">Fecha</label>
+          <input
+            type="date"
+            [value]="form().date"
+            (change)="patchForm({ date: $any($event.target).value })"
+            class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm text-gray-700
+                   bg-white focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition-all"
+          />
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-gray-700">Tipo</label>
+            <select
+              [value]="form().type"
+              (change)="patchForm({ type: $any($event.target).value })"
+              class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm text-gray-700
+                     bg-white focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition-all">
+              @for (t of alertTypes; track t) {
+                <option [value]="t">{{ t }}</option>
+              }
+            </select>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-gray-700">Estado</label>
+            <select
+              [value]="form().status"
+              (change)="patchForm({ status: $any($event.target).value })"
+              class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm text-gray-700
+                     bg-white focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition-all">
+              @for (s of alertStatuses; track s) {
+                <option [value]="s">{{ s }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
+        <label class="flex items-center gap-2.5 text-sm text-gray-600 cursor-pointer select-none">
+          <input
+            type="checkbox"
+            [checked]="form().featured"
+            (change)="patchForm({ featured: $any($event.target).checked })"
+            class="w-4 h-4 rounded border-gray-300 accent-blue-500 cursor-pointer"
+          />
+          Mostrar como alerta destacada
+        </label>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="flex justify-end gap-3 px-6 py-4 bg-gray-50 border-t border-gray-100">
+        <button
+          (click)="closeModal()"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 bg-white border border-gray-200
+                 hover:bg-gray-100 transition-all">
+          Cancelar
+        </button>
+        <button
+          (click)="saveAlert()"
+          class="flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white
+                 bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+                 shadow-md shadow-blue-200 transition-all">
+          <span class="material-icons text-base leading-none">save</span>
+          {{ editingAlert() ? 'Guardar cambios' : 'Crear alerta' }}
+        </button>
+      </div>
+
+    </div>
+  </div>
+}
