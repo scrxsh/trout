@@ -1,7 +1,7 @@
 
 # Trout
 
-Este proyecto fue generado utilizando [Angular CLI](https://github.com/angular/angular-cli) versión 21.2.0 y [Spring Boot](https://spring.io/projects/spring-boot) versión 4.0.3 creado con [Spring Initialzr](https://start.spring.io/) para el semillero SISLA de la Fundación Universitaria de San Gil, sede Chiquinquirá
+Este proyecto fue generado utilizando [Angular CLI](https://github.com/angular/angular-cli) versión 21.2.4 y [Spring Boot](https://spring.io/projects/spring-boot) versión 4.0.3 creado con [Spring Initialzr](https://start.spring.io/) para el semillero SISLA de la Fundación Universitaria de San Gil, sede Chiquinquirá
 
 
 ## Servidor de desarrollo (Frontend)
@@ -16,7 +16,12 @@ Para iniciar un servidor de desarrollo local, ejecuta:
 ng serve -o
 ```
 
-Una vez que el servidor esté en ejecución, abre tu navegador y navega a http://localhost:4200/. La aplicación se recargará automáticamente cada vez que modifiques alguno de los archivos fuente.
+Una vez que el servidor esté en ejecución, abre tu navegador y navega a http://localhost:4200/. La aplicación se recargará automáticamente cada vez que modifiques alguno de los archivos fuente. Luego se puede compartir la URL: 
+
+```bash
+npx tunnelmole 4200
+```
+
 ### Generación de código
 
 Angular CLI incluye potentes herramientas para generar código automáticamente. Para crear un nuevo componente, ejecuta (se puede con la extensión de VSCode):
