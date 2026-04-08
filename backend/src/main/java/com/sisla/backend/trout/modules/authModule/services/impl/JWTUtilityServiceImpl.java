@@ -34,7 +34,7 @@ public class JWTUtilityServiceImpl implements IJWTUtilityService {
     @Value("classpath:jwtKeys/public_key.pem")
     private Resource publicKeyResource;
 
-    //Expiracion del token basicamente es pasar de dias a milisegundos que maneja date
+    //Expiracion del token basicamente es pasar de dias a milisegundos que maneja date de Java
     private static final long expirationToken = 7*24*60*60*1000;
 
     @Override

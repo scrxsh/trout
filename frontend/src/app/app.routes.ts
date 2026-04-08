@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { Cliente } from './modules/customers/components/cliente/cliente';
 import { Login } from './modules/auth/login/components/login/login';
 import { Dashboard } from './modules/charts/components/dashboard/dashboard';
 

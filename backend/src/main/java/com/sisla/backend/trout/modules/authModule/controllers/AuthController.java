@@ -23,7 +23,7 @@ public class AuthController {
         return new ResponseEntity<>(authService.register(user), HttpStatus.CREATED);
     }
 
-    
+
     @PostMapping("/login")
     private ResponseEntity<HashMap<String, String>> logearUsuario(@RequestBody LoginDTO loginRequest) throws Exception {
         HashMap<String, String> login = authService.login(loginRequest);
