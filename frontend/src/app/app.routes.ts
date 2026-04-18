@@ -7,6 +7,7 @@ import { loginGuard } from './core/guards/login-guard';
 import { loginPublicGuard } from './core/guards/login-guard-public';
 import { Layout } from './core/components/layout/layout';
 import { Events } from './modules/warnings/events/events';
+import { Landing } from './modules/pruebas-diseno/landing/landing';
 
 export const routes: Routes = [
     {
@@ -15,9 +16,18 @@ export const routes: Routes = [
         canActivate: [loginPublicGuard]
     },
     {
+        path: 'pruebas',
+        component: Landing,
+    },
+    {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+    },
+    {
         path: '',
         component: Layout,
-        canActivate: [loginGuard],
+        canActivateChild: [loginGuard],
         children: [
             {
                 path: 'dashboard',
