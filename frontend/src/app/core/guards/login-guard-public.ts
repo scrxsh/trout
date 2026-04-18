@@ -20,7 +20,7 @@ export const loginPublicGuard: CanActivateFn = () => {
 
     if(autenticado){
         router.navigate(['/dashboard']);
-
+        return false;
     }
     return true;
 }
