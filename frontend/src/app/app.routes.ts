@@ -5,7 +5,7 @@ import { Dashboard } from './modules/charts/components/dashboard/dashboard';
 //Importar los guardianes
 import { loginGuard } from './core/guards/login-guard';
 import { loginPublicGuard } from './core/guards/login-guard-public';
-import { Layout } from './core/components/layout/layout';
+import { Layout } from './pages/layout/layout';
 import { Events } from './modules/warnings/events/events';
 
 

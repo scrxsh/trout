@@ -1,6 +1,6 @@
 import { Component, signal, inject } from '@angular/core'; // Agregamos signal
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { LoginService } from '../../../modules/auth/login/services/login-service';
+import { LoginService } from '../../modules/auth/login/services/login-service';
 import { ToggleSidebar } from './services/toggle-sidebar';
 
 @Component({
@@ -12,7 +12,7 @@ import { ToggleSidebar } from './services/toggle-sidebar';
 })
 export class Layout {
     // logica de el menu lateral
-  sidebar = inject(ToggleSidebar)
+  sidebar:any = inject(ToggleSidebar)
 
   toggleSidebar() {
     this.sidebar.toggle();
