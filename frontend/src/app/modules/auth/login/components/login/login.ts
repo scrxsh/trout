@@ -29,7 +29,7 @@ export class Login {
     if(this.loginForm.invalid) return;
 
     //Visualizar la carga no es necesario
-    this.isLoading.set(true);
+    //this.isLoading.set(true);
 
     // Extraer los datos del formulario con RawValue - Valor leido
     const credentials = this.loginForm.getRawValue();
@@ -57,17 +57,20 @@ export class Login {
         error: (err) => {
           this.isLoading.set(false);
           this.loginForm.reset();
-          this.mensaje.set("Error de autenticacion");
+          this.mensaje.set("Error de autenticación");
         }
     });
   }
 
   constructor(){
     afterNextRender(() => {
+      /*
       this.iniciarTour();
+      */
     });
   }
 
+  /*
   //Driver js
   iniciarTour(){
     const driverObj = driver({
@@ -109,5 +112,5 @@ export class Login {
     });
     driverObj.drive();
   }
-  
+  */
 }

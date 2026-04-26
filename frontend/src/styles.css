@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+@plugin "@tailwindcss/forms";
 @import 'leaflet/dist/leaflet.css';
 
 @font-face {
@@ -53,6 +54,8 @@
 
     /* Extras */
     --color-surface-tint: #395e9b;
+
+    --background-image-hero-gradient: linear-gradient(135deg, #1a4480 0%, #d7e2ff 100%);
 }
 
 :root {
