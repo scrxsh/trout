@@ -1,1 +1,29 @@
-<p>navbar works!</p>
+<header class="sticky bg-on-primary/80 -my-3.5 mb-3.5 top-0 z-40 backdrop-blur-sm flex justify-between items-center px-8 py-4 shadow-[0_12px_32px_rgba(27,27,27,0.06)] rounded-2xl">
+    <div class="flex items-center space-x-8">
+        <nav class="hidden md:flex space-x-6">
+            <a class="text-tertiary-container font-bold border-b-2 border-tertiary-container] transition-colors duration-300" href="#">Analytics</a>
+            <a class="text-on-background font-medium hover:text-secondary transition-colors duration-300" href="#">Insights</a>
+            <a class="text-on-background font-medium hover:text-secondary transition-colors duration-300" href="#">Reportes</a>
+        </nav>
+    </div>
+    <div class="flex items-center space-x-4">
+    <!-- Global Filters -->
+    <div class="flex bg-surface-container-low rounded-full px-4 py-2 space-x-4">
+        <div class="flex items-center space-x-2">
+            <span class="material-symbols-outlined text-primary text-lg">calendar_today</span>
+            <span class="text-sm font-medium">Ultimo mes</span>
+            <span class="material-symbols-outlined text-xs" data-icon="expand_more">expand_more</span>
+        </div>
+        <div class="w-px h-4 bg-outline-variant/30 my-auto"></div>
+        <div class="flex items-center space-x-2">
+            <span class="material-symbols-outlined text-primary text-lg">demography</span>
+            <span class="text-sm font-medium">Barrio</span>
+            <span class="material-symbols-outlined text-xs">expand_more</span>
+        </div>
+    </div>
+    <div class="relative">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+        <input class="bg-surface-container-high border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary-fixed w-48 transition-all" placeholder="Buscar [Ctrl+K]..." type="text"/>
+    </div>
+    </div>
+</header>
