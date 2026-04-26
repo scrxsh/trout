@@ -1,26 +1,30 @@
 import { Component, signal, inject } from '@angular/core'; // Agregamos signal
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { LoginService } from '../../modules/auth/login/services/login-service';
-import { ToggleSidebar } from './services/toggle-sidebar';
+import { CollapsedSidebar } from './services/collapsed-sidebar';
+
+import { Sidebar } from './components/sidebar/sidebar';
+import { Navbar } from './components/navbar/navbar';
+import { Footer } from './components/footer/footer';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, Sidebar, Navbar, Footer],
   templateUrl: './layout.html',
   styleUrl: './layout.css',
 })
 export class Layout {
     // logica de el menu lateral
-  sidebar:any = inject(ToggleSidebar)
-
+  public sidebarService = inject(CollapsedSidebar);
+  
   toggleSidebar() {
-    this.sidebar.toggle();
+    this.sidebarService.toggle();
   }
 
-  private loginService = inject(LoginService)
+  private login = inject(LoginService)
 
   cerrarSesion(){
-    this.loginService.cerrarSesion();
+    this.login.cerrarSesion();
   }
 }

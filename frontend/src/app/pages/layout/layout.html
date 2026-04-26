@@ -1,34 +1,11 @@
-<div class="layout">
-  <header class="header">
-    <button class="toggle-btn" (click)="toggleSidebar()">
-      <span class="material-icons">sort</span>
-    </button>
-    <div class="title">Semillero SISLA</div>
-    <a class="user flex space-x-1.5" (click)="cerrarSesion()">
-      <p>Salir</p>
-      <span class="material-icons">logout</span>
-    </a>
-  </header>
-
-  <div class="body">
-    <aside class="sidebar" [class.collapsed]="sidebar.collapsed()">
-      <nav>
-        <a routerLink="/dashboard" routerLinkActive="active">
-          <span class="material-icons icon">dashboard</span>
-          <span class="label" [class.hide]="sidebar.collapsed()">Dashboard</span>
-        </a>
-        <a routerLink="/alertas" routerLinkActive="active">
-          <span class="material-icons icon">warning</span>
-          <span class="label" [class.hide]="sidebar.collapsed()">Alertas de detección</span>
-        </a>
-        <a routerLink="/settings" routerLinkActive="active">
-          <span class="material-icons icon">settings</span>
-          <span class="label" [class.hide]="sidebar.collapsed()">Configuración</span>
-        </a>
-      </nav>
-    </aside>
-    <main class="content">
-      <router-outlet></router-outlet>
+<div class="min-h-screen bg-surface-container">
+  <app-sidebar />
+  <div class="flex flex-col transition-all duration-300 ease-in-out min-h-screen" [class.ml-64]="!sidebarService.collapsed()" [class.ml-20]="sidebarService.collapsed()">
+    <main class="p-6 flex-1">
+      <app-navbar />
+        <router-outlet />
+      <app-footer />
     </main>
   </div>
 </div>
+

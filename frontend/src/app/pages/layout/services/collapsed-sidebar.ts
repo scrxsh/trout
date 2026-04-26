@@ -2,10 +2,9 @@ import { Injectable, signal, effect, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ToggleSidebar {
-
+export class CollapsedSidebar {
   private platformId = inject(PLATFORM_ID);
 
   collapsed = signal(false);

@@ -9,6 +9,9 @@ import { Layout } from './pages/layout/layout';
 import { Events } from './modules/warnings/events/events';
 
 
+//Pruebas temporales***
+import { Pruebas} from './pages/pruebas/pruebas';
+
 export const routes: Routes = [
     {
         path: 'login',
@@ -34,6 +37,10 @@ export const routes: Routes = [
                 component: Events
             }
         ]
+    },
+    {
+        path: 'pruebas',
+        component: Pruebas
     }
 ];
 

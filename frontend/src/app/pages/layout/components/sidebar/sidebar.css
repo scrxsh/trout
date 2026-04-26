@@ -1,0 +1,27 @@
+@reference "../../../../../styles.css";
+
+
+.sidebar-container {
+    @apply flex flex-col fixed left-0 top-0 py-8 space-y-6 bg-surface-container-low h-screen w-64 rounded-4xl z-50;
+}
+
+.sidebar-container.collapsed {
+    @apply w-25 px-0 items-center;
+}
+
+.footer-sidebar {
+    @apply flex items-center space-x-3 text-shadow-on-surface px-4 py-3 transition-all duration-200 ease-in-out;
+    
+    &:not(.collapsed):hover {
+        @apply translate-x-1 bg-primary-container/50 rounded-2xl;
+    }
+}
+
+.footer-sidebar.collapsed {
+    @apply justify-center space-x-0;
+
+    &:hover {
+        @apply translate-y-1 bg-primary-container/50 rounded-2xl;
+    }
+}
+

@@ -11,7 +11,53 @@
     font-display: swap;
 }
 
+@theme {
+
+    /*Primario*/
+    --color-primary: #1a4480;
+    --color-on-primary: #ffffff;
+    --color-primary-container: #d7e2ff;
+    --color-on-primary-container: #284677;
+
+    /* Secundario */
+    --color-secondary: #cf3a3a;
+    --color-on-secondary: #ffffff;
+    --color-secondary-container: #fa5955;
+    --color-on-secondary-container: #5c0008;
+
+    /* Terciario */
+    --color-tertiary: #0b5694;
+    --color-on-tertiary: #ffffff;
+    --color-tertiary-container: #00467c;
+    --color-on-tertiary-container: #7eb5f9;
+
+    /* Superficie */
+    --color-background: #f1f3f6;
+    --color-on-background: #161616;
+
+    --color-surface: #ffffff;
+    --color-on-surface: #161616;
+
+    /* Variantes de superficie */
+    --color-surface-container: #f0eded;
+    --color-surface-container-high: #eae7e7;
+    --color-surface-container-low: #f6f3f2;
+
+    /* Outline */
+    --color-outline: #757575;
+    --color-outline-variant: #c3c6d1;
+
+    /* Error */
+    --color-error: #ba1a1a;
+    --color-on-error: #ffffff;
+
+    /* Extras */
+    --color-surface-tint: #395e9b;
+}
+
 :root {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
 }
+
+

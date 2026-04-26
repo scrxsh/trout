@@ -1,0 +1,47 @@
+<aside class="sidebar-container" [class.collapsed]="sidebarService.collapsed()">
+    <div class="px-6 mb-4 flex items-start" [class.justify-between]="!sidebarService.collapsed()" [class.justify-center]="sidebarService.collapsed()">
+        @if (!sidebarService.collapsed()) {
+            <div class="flex-1 transition-opacity duration-300">
+                <h1 class="text-lg font-bold text-primary">Trout</h1>
+                <p class="text-[10px] uppercase tracking-widest text-outline font-bold">Salud Comunitaria</p>
+            </div>
+        }
+        <button class=" cursor-pointer mt-1 py-0.5 px-2.5 hover:bg-outline-variant/20 rounded-lg transition-all duration-200 text-shadow-on-surface hover:text-primary group" (click)="toggleSidebar()">
+            <span class="material-symbols-outlined text-[20px] block group-hover:-translate-x-0.5 transition-transform">{{ sidebarService.collapsed() ? 'more_up' : 'more_down' }}</span>
+        </button>
+    </div>
+    <nav class="flex-1 px-4 space-y-2">
+        @for (item of menuItems; track item.route) {
+        <a [routerLink]="item.route"  routerLinkActive  #rla="routerLinkActive" [class]="getItemClass(rla.isActive)" >
+            <span class="material-symbols-outlined">{{ item.icon }}</span>
+            @if (!sidebarService.collapsed()){
+                <span class="font-medium text-sm">{{ item.label }}</span>
+            }
+        </a>
+        }
+    </nav>
+    <div class="px-4 border-t border-outline-variant/10 pt-6">
+        <a class="footer-sidebar" [class.collapsed]="sidebarService.collapsed()" href="#">
+            <span class="material-symbols-outlined" data-icon="help">help</span>
+            @if(!sidebarService.collapsed()){
+                <span class="font-medium text-sm">Soporte</span>
+            }
+        </a>
+        <a class="footer-sidebar" [class.collapsed]="sidebarService.collapsed()" href="#">
+            <span class="material-symbols-outlined" data-icon="settings">settings</span>
+            @if(!sidebarService.collapsed()){
+                <span class="font-medium text-sm">Configuración</span>
+            }
+        </a>
+        <div class="mt-4 flex items-center space-x-3 px-4">
+            @if(!sidebarService.collapsed()){
+                <div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-primary text-xs font-bold"><span class="material-symbols-outlined">account_circle</span></div>
+                <div class="flex-1">
+                    <p class="text-xs font-bold leading-none">Admin</p>
+                    <p class="text-[10px] text-outline">Adm. Sistema</p>
+                </div>
+            }
+            <span class="material-symbols-outlined text-outline cursor-pointer hover:text-error transition-colors" (click)="cerrarSesion()">logout</span>
+        </div>
+    </div>
+</aside>

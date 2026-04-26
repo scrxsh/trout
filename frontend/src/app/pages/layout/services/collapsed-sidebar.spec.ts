@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ToggleSidebar } from './toggle-sidebar';
+import { CollapsedSidebar } from './collapsed-sidebar';
 
-describe('ToggleSidebar', () => {
-  let service: ToggleSidebar;
+describe('CollapsedSidebar', () => {
+  let service: CollapsedSidebar;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ToggleSidebar);
+    service = TestBed.inject(CollapsedSidebar);
   });
 
   it('should be created', () => {

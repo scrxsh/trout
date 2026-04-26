@@ -20,7 +20,7 @@ export class Dashboard {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
     afterNextRender(() => {
-      this.iniciarTour();
+      //this.iniciarTour();
     });
   }
 
@@ -59,6 +59,7 @@ export class Dashboard {
     }
   };
 
+  /*
   iniciarTour(){
     const driverObj = driver({
       overlayColor: '#BDB1AF',
@@ -89,7 +90,7 @@ export class Dashboard {
       ]
     });
     driverObj.drive();
-  }
+  }*/
 
 
 }
