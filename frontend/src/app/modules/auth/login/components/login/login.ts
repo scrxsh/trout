@@ -1,11 +1,15 @@
 import { afterNextRender, Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NonNullableFormBuilder,ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login-service';
 import { driver } from "driver.js";
 import { Router } from '@angular/router';
+
+
+
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule], /* Formularios reactivos de Angular */
+  imports: [ReactiveFormsModule, RouterLink], /* Formularios reactivos de Angular */
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -58,19 +62,18 @@ export class Login {
           this.isLoading.set(false);
           this.loginForm.reset();
           this.mensaje.set("Error de autenticación");
+          setTimeout(() => this.mensaje.set(''), 3000);
         }
     });
   }
 
   constructor(){
     afterNextRender(() => {
-      /*
       this.iniciarTour();
-      */
     });
   }
 
-  /*
+  
   //Driver js
   iniciarTour(){
     const driverObj = driver({
@@ -112,5 +115,5 @@ export class Login {
     });
     driverObj.drive();
   }
-  */
+  
 }
