@@ -1,20 +1,18 @@
-import { afterNextRender, Component, inject, signal } from '@angular/core';
+import { afterNextRender, Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NonNullableFormBuilder,ReactiveFormsModule, Validators } from '@angular/forms';
+import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login-service';
-import { driver } from "driver.js";
+import { driver } from 'driver.js';
 import { Router } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink], /* Formularios reactivos de Angular */
+  imports: [ReactiveFormsModule, RouterLink] /* Formularios reactivos de Angular */,
   templateUrl: './login.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './login.css',
 })
 export class Login {
-  
   private fb = inject(NonNullableFormBuilder); /* Formularios No Nullos la variable fb → FormBuild*/
   private loginService = inject(LoginService); // Inyectar la logica del servicio
   private router = inject(Router);
@@ -24,13 +22,13 @@ export class Login {
 
   // Validaciones basicas del formulario requerido y el tipo
   loginForm = this.fb.group({
-    email: ['' , [Validators.required, Validators.email]],
-    password: ['', Validators.required]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
   });
 
   //Funcion mientras el logueo del formulario
-  enLogin(){
-    if(this.loginForm.invalid) return;
+  enLogin() {
+    if (this.loginForm.invalid) return;
 
     //Visualizar la carga no es necesario
     //this.isLoading.set(true);
@@ -38,44 +36,43 @@ export class Login {
     // Extraer los datos del formulario con RawValue - Valor leido
     const credentials = this.loginForm.getRawValue();
 
-    // Subscribirse al evento 
+    // Subscribirse al evento
     this.loginService.login(credentials).subscribe({
       next: (data) => {
         this.isLoading.set(false);
-        // Buscar el token, de momento no se usara para acceder a otros endpoints 
+        // Buscar el token, de momento no se usara para acceder a otros endpoints
 
-      this.loginService.guardarToken(data.jwt);
-        if (data.jwt){
+        this.loginService.guardarToken(data.jwt);
+        if (data.jwt) {
           this.mensaje.set('Login Exitoso');
-          
+
           //Redireccion al dar click en el boton, diferente al guardian, el guardian es en la url
 
-          this.router.navigate(['/dashboard']).then(nav=> {
-            if(nav){
+          this.router.navigate(['/dashboard']).then((nav) => {
+            if (nav) {
               this.loginForm.reset();
             }
-          })
+          });
         }
-        },
-        // Manejar el error 401
-        error: (err) => {
-          this.isLoading.set(false);
-          this.loginForm.reset();
-          this.mensaje.set("Error de autenticación");
-          setTimeout(() => this.mensaje.set(''), 3000);
-        }
+      },
+      // Manejar el error 401
+      error: (err) => {
+        this.isLoading.set(false);
+        this.loginForm.reset();
+        this.mensaje.set('Error de autenticación');
+        setTimeout(() => this.mensaje.set(''), 3000);
+      },
     });
   }
 
-  constructor(){
+  constructor() {
     afterNextRender(() => {
       this.iniciarTour();
     });
   }
 
-  
   //Driver js
-  iniciarTour(){
+  iniciarTour() {
     const driverObj = driver({
       overlayColor: '#BDB1AF',
       showProgress: true,
@@ -84,36 +81,35 @@ export class Login {
       prevBtnText: 'Anterior',
       doneBtnText: 'OK',
       steps: [
-        { 
-          element: '#email', 
-          popover: { 
-            title: 'Correo Electronico', 
+        {
+          element: '#email',
+          popover: {
+            title: 'Correo Electronico',
             description: 'Ingresa tu correo electronico registrado para acceder.',
-            side: "right", 
-            align: 'start' 
-          } 
+            side: 'right',
+            align: 'start',
+          },
         },
-        { 
-          element: '#password', 
-          popover: { 
-            title: 'Contraseña', 
+        {
+          element: '#password',
+          popover: {
+            title: 'Contraseña',
             description: 'Clave de la cuenta',
-            side: "left", 
-            align: 'start' 
-          } 
+            side: 'left',
+            align: 'start',
+          },
         },
-        { 
-          element: 'button[type="submit"]', 
-          popover: { 
-            title: 'Boton de Logueo', 
+        {
+          element: 'button[type="submit"]',
+          popover: {
+            title: 'Boton de Logueo',
             description: 'Haz clic aquí para loguearte.',
-            side: "bottom", 
-            align: 'center' 
-          } 
-        }
-      ]
+            side: 'bottom',
+            align: 'center',
+          },
+        },
+      ],
     });
     driverObj.drive();
   }
-  
 }

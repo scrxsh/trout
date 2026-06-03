@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core'; // Agregamos signal
+import { Component, signal, inject, ChangeDetectionStrategy } from '@angular/core'; // Agregamos signal
 import { RouterOutlet } from '@angular/router';
 import { LoginService } from '../../modules/auth/login/services/login-service';
 import { CollapsedSidebar } from './services/collapsed-sidebar';
@@ -12,19 +12,20 @@ import { Footer } from './components/footer/footer';
   standalone: true,
   imports: [RouterOutlet, Sidebar, Navbar, Footer],
   templateUrl: './layout.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './layout.css',
 })
 export class Layout {
-    // logica de el menu lateral
+  // logica de el menu lateral
   public sidebarService = inject(CollapsedSidebar);
-  
+
   toggleSidebar() {
     this.sidebarService.toggle();
   }
 
-  private login = inject(LoginService)
+  private login = inject(LoginService);
 
-  cerrarSesion(){
+  cerrarSesion() {
     this.login.cerrarSesion();
   }
 }

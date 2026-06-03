@@ -1,12 +1,13 @@
-import { CommonModule} from '@angular/common';
-import { Component, signal, computed, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, signal, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Alert, AlertStatus, AlertType} from './events-model';
+import { Alert, AlertStatus, AlertType } from './events-model';
 
 @Component({
   selector: 'app-events',
   imports: [CommonModule, FormsModule],
   templateUrl: './events.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './events.css',
 })
 export class Events implements OnInit {
@@ -15,7 +16,7 @@ export class Events implements OnInit {
   //Editar la alerta
   editingAlert = signal<Alert | null>(null);
 
-  //Formulario estatico sin backend 
+  //Formulario estatico sin backend
   form = signal<Omit<Alert, 'id'>>({
     title: '',
     description: '',
@@ -36,8 +37,7 @@ export class Events implements OnInit {
     {
       id: '1',
       title: 'Aumento de casos de gripe en la comunidad',
-      description:
-        'Se ha detectado un incremento del 40% en casos de gripe en el último mes.',
+      description: 'Se ha detectado un incremento del 40% en casos de gripe en el último mes.',
       date: '2024-10-25',
       type: 'Critica',
       status: 'Activa',
@@ -46,8 +46,7 @@ export class Events implements OnInit {
     {
       id: '2',
       title: 'Picos de calor la próxima semana',
-      description:
-        'Temperaturas esperadas de hasta 35°C. Recomendaciones de hidratación.',
+      description: 'Temperaturas esperadas de hasta 35°C. Recomendaciones de hidratación.',
       date: '2024-10-24',
       type: 'Advertencia',
       status: 'Activa',
@@ -56,8 +55,7 @@ export class Events implements OnInit {
     {
       id: '3',
       title: 'Nueva campaña de vacunación',
-      description:
-        'Disponible en el centro comunitario del 20 al 30 de octubre.',
+      description: 'Disponible en el centro comunitario del 20 al 30 de octubre.',
       date: '2024-10-23',
       type: 'Informativa',
       status: 'Programada',
@@ -74,8 +72,7 @@ export class Events implements OnInit {
     {
       id: '5',
       title: 'Lluvias intensas esperadas',
-      description:
-        'Precipitaciones de hasta 80mm durante el fin de semana.',
+      description: 'Precipitaciones de hasta 80mm durante el fin de semana.',
       date: '2024-10-15',
       type: 'Advertencia',
       status: 'Resuelta',
@@ -83,8 +80,7 @@ export class Events implements OnInit {
     {
       id: '6',
       title: 'Jornada de salud mental',
-      description:
-        'Actividad gratuita de bienestar emocional para toda la comunidad.',
+      description: 'Actividad gratuita de bienestar emocional para toda la comunidad.',
       date: '2024-10-10',
       type: 'Informativa',
       status: 'Completada',
@@ -92,9 +88,7 @@ export class Events implements OnInit {
   ]);
 
   // ── Featured alerts (top cards) ──────────────────────────
-  featuredAlerts = computed(() =>
-    this.alerts().filter((a) => a.featured)
-  );
+  featuredAlerts = computed(() => this.alerts().filter((a) => a.featured));
 
   // ── Filtered table rows ──────────────────────────────────
   filteredAlerts = computed(() => {
@@ -105,24 +99,17 @@ export class Events implements OnInit {
     return this.alerts()
       .filter((a) => !a.featured)
       .filter(
-        (a) =>
-          a.title.toLowerCase().includes(term) ||
-          a.description.toLowerCase().includes(term)
+        (a) => a.title.toLowerCase().includes(term) || a.description.toLowerCase().includes(term),
       )
       .filter((a) => type === 'Todas' || a.type === type)
       .filter((a) => status === 'Todas' || a.status === status);
   });
 
   alertTypes: AlertType[] = ['Critica', 'Advertencia', 'Informativa'];
-  alertStatuses: AlertStatus[] = [
-    'Activa',
-    'Programada',
-    'Resuelta',
-    'Completada',
-  ];
- 
+  alertStatuses: AlertStatus[] = ['Activa', 'Programada', 'Resuelta', 'Completada'];
+
   ngOnInit() {}
- 
+
   // ── CRUD ─────────────────────────────────────────────────
   openNew() {
     this.editingAlert.set(null);
@@ -136,27 +123,25 @@ export class Events implements OnInit {
     });
     this.showModal.set(true);
   }
- 
+
   openEdit(alert: Alert) {
     this.editingAlert.set(alert);
     this.form.set({ ...alert });
     this.showModal.set(true);
   }
- 
+
   closeModal() {
     this.showModal.set(false);
     this.editingAlert.set(null);
   }
- 
+
   saveAlert() {
     const f = this.form();
     if (!f.title.trim() || !f.description.trim()) return;
- 
+
     const editing = this.editingAlert();
     if (editing) {
-      this.alerts.update((list) =>
-        list.map((a) => (a.id === editing.id ? { ...a, ...f } : a))
-      );
+      this.alerts.update((list) => list.map((a) => (a.id === editing.id ? { ...a, ...f } : a)));
     } else {
       const newAlert: Alert = {
         ...f,
@@ -166,16 +151,16 @@ export class Events implements OnInit {
     }
     this.closeModal();
   }
- 
+
   deleteAlert(id: string) {
     this.alerts.update((list) => list.filter((a) => a.id !== id));
   }
- 
+
   // ── Patch form field ─────────────────────────────────────
   patchForm(patch: Partial<Omit<Alert, 'id'>>) {
     this.form.update((f) => ({ ...f, ...patch }));
   }
- 
+
   // ── Style helpers ─────────────────────────────────────────
   featuredCardClass(type: AlertType): string {
     const map: Record<AlertType, string> = {
@@ -185,7 +170,7 @@ export class Events implements OnInit {
     };
     return map[type];
   }
- 
+
   featuredIconClass(type: AlertType): string {
     const map: Record<AlertType, string> = {
       Critica: 'icon-critica',
@@ -194,7 +179,7 @@ export class Events implements OnInit {
     };
     return map[type];
   }
- 
+
   typeBadgeClass(type: AlertType): string {
     const map: Record<AlertType, string> = {
       Critica: 'badge badge--red',
@@ -204,7 +189,6 @@ export class Events implements OnInit {
     return map[type];
   }
 
-  
   statusBadgeClass(status: AlertStatus): string {
     const map: Record<AlertStatus, string> = {
       Activa: 'badge badge--red',
