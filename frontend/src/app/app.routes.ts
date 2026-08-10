@@ -12,6 +12,7 @@ import { Events } from './modules/warnings/events/events';
 
 //Pruebas temporales***
 import { Pruebas} from './pages/pruebas/pruebas';
+import { Pages } from './pages/pruebas/pages/pages';
 
 export const routes: Routes = [
     {
@@ -44,9 +45,14 @@ export const routes: Routes = [
             }
         ]
     },
+    /*
     {
         path: 'pruebas',
         component: Pruebas
+    },*/
+    {
+      path: 'pages',
+      component: Pages
     }
 ];
 

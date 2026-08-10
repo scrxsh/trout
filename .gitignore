@@ -63,3 +63,5 @@ frontend/.angular/
 .env.local
 .env.*
 
+#Pruebas
+frontend/src/app/pages/pruebas/
