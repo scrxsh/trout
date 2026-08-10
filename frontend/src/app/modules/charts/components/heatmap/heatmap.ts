@@ -39,6 +39,48 @@ export class Heatmap {
   }
 
   private async iniciarMapa() {
+      const puntosCont = [
+        {
+          lat: 5.6186,
+          lng: -73.8164,
+          titulo: 'Plaza de la libertad',
+          casos: 2789,
+          color: 'bg-red-600',
+          int: 'w-12 h-12'
+        },
+        {
+          lat: 5.6169,
+          lng: -73.8128,
+          titulo: 'Palacio de la cultura',
+          casos: 1254,
+          color: 'bg-green-600',
+          int: 'w-9 h-9'
+        },
+        {
+          lat: 5.6150,
+          lng: -73.8191,
+          titulo: 'Centro de Salud Norte',
+          casos: 846,
+          color: 'bg-yellow-600',
+          int: 'w-5 h-5'
+        },
+        {
+          lat: 5.6169,
+          lng: -73.8168,
+          titulo: 'Juan Pablo II',
+          casos: 30,
+          color: 'bg-indigo-600',
+          int: 'w-4 h-4'
+        },
+        {
+          lat: 5.6255,
+          lng: -73.8200,
+          titulo: 'Av. circunvalar',
+          casos: 9,
+          color: 'bg-olive-600',
+          int: 'w-3 h-3'
+        },
+      ]
     //Llamar al servicio de leaflet
     const L = await this.leafletService.cargarLeaflet();
 
@@ -52,23 +94,25 @@ export class Heatmap {
     //Proveedor de mapa, dar atribuciones necesaria de acuerdo con DMCA de OSM
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 25,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OSM</a>',
     }).addTo(this.mapa);
 
-    const marker = L.marker([5.6186, -73.8164], {
-      icon: L.divIcon({
-        className: '',
-        html: `
-            <div class="relative">
-              <div class="w-6 h-6 bg-red-800 rounded-full border-2 border-white shadow"></div>
-              <div class="absolute w-3 h-3 bg-red-600 rounded-full animate-ping opacity-50"></div>
-            </div>`,
-        iconSize: [18, 18],
-        iconAnchor: [3, 3],
-      }),
-    }).addTo(this.mapa);
-
-    marker.bindPopup('<b>Chiquinquirá, Boyacá</b><br>Contagios: 2.789').openPopup();
+    puntosCont.forEach(punto => {
+      L.marker([punto.lat, punto.lng], {
+        icon: L.divIcon({
+          className: '',
+          html: `
+            <div class="relative ${punto.int}">
+              <div class="absolute inset-0 ${punto.color} rounded-full border-2 border-white shadow"></div>
+              <div class="absolute inset-0 bg-gray-900 rounded-full animate-ping opacity-50"></div>
+            </div>
+          `,
+          iconSize: [18, 18],
+          iconAnchor: [3, 3],
+        }),
+      }).addTo(this.mapa)
+      .bindPopup(`<b>${punto.titulo}</b><br>Contagios: ${punto.casos}`);
+    });
 
     setTimeout(() => {
       this.mapa.invalidateSize({ animate: true });
@@ -80,12 +124,12 @@ export class Heatmap {
   private cargarHeatmap(L: any) {
     this.http.get<any[]>(this.urlApi).subscribe({
       next: (puntos) => {
-        /* 
+        /*
         [
         5.623579736633825, lat
         -73.81951849830288, lon
         0.49422684316490323, intesidad del mapa
-        ] 
+        ]
         */
         const heatLayer = (L as any).heatLayer(puntos, {
           radius: 25,

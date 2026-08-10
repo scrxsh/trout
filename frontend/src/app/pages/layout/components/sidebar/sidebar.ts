@@ -32,14 +32,14 @@ export class Sidebar {
   );
 
   protected readonly navBase = computed(() => {
-    const base = `${this.shared()} text-shadow-on-surface hover:bg-primary-container/50 hover:rounded-2xl`;
+    const base = `${this.shared()} text-shadow-on-surface hover:bg-primary-container/40 hover:rounded-2xl`;
     return this.sidebarService.collapsed()
       ? `${base} hover:translate-y-1`
       : `${base} hover:translate-x-1`;
   });
 
   protected readonly navActive = computed(() => {
-    const active = `${this.shared()} bg-white text-primary rounded-2xl shadow-sm`;
+    const active = `${this.shared()} bg-primary-container/55 text-primary rounded-2xl shadow-sm`;
     return this.sidebarService.collapsed() ? active : `${active} ml-2`;
   });
 

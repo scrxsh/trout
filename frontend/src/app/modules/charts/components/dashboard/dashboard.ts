@@ -27,8 +27,11 @@ export class Dashboard {
     this.isBrowser = isPlatformBrowser(this.platformId);
     afterNextRender(() => {
       //this.iniciarTour();
+      Chart.defaults.font.family = 'Open Sans';
+      Chart.defaults.font.size = 12;
     });
   }
+
 
   public barChartType: ChartType = 'bar';
   public pieChartType: ChartType = 'pie';
@@ -40,32 +43,32 @@ export class Dashboard {
       'San Mateo',
       'Barrio Obrero',
       'Jardin del Norte',
-      'Zonas Rurales',
       'Belencito',
+      'Zonas Rurales',
     ],
     datasets: [
       {
-        data: [400, 250, 320, 180, 200, 500, 350],
-        label: 'Reportes',
+        data: [100, 250, 320, 180, 200, 200, 350],
         backgroundColor: [
-          '#598BFF',
-          '#FFC94D',
-          '#42AAFF',
-          '#FF708D',
-          '#2CE69B',
-          '#6200EE',
-          '#FFA919',
+          '#1a4480',
+          '#cf3a3a',
+          '#284677',
+          '#b83232',
+          '#0b5694',
+          '#9b2929',
+          '#3b5d93'
         ],
       },
     ],
   };
 
+
   public pieChartData: ChartData<'pie'> = {
-    labels: ['Virales', 'Bacterianas', 'Cronicas', 'Autoinmunes'],
+    labels: ['Tos Ferina', 'Gripa', 'Dengue', 'Tuberculosis', 'Cólera', 'Tétanos', 'Salmonelosis', 'Fiebre Tifoidea', 'Brucelosis', 'Rabia', 'Zika', 'Chikunguña', 'Virus del Papiloma Humano (VPH)', 'Hepatitis A'],
     datasets: [
       {
-        data: [300, 150, 200, 80],
-        backgroundColor: ['#935BAB', '#FFC94D', '#42AAFF', '#FF708D'],
+        data: [100, 250, 50, 170, 180, 200, 60, 70, 90, 30, 140, 210, 360, 45],
+        backgroundColor: ['#284677','#cf3a3a','#0b5694','#9b2929']
       },
     ],
   };
@@ -73,14 +76,13 @@ export class Dashboard {
   public chartOptions: ChartConfiguration['options'] = {
     responsive: true,
     maintainAspectRatio: false,
-    // --- ANIMACIONES ACTIVADAS ---
     animation: {
       duration: 1000, // Tiempo de la animación (1 segundo)
       easing: 'easeOutQuart', // Movimiento elegante (empieza rápido, termina lento)
     },
     // -----------------------------
     plugins: {
-      legend: { display: true, position: 'top' },
+      legend: { display: false },
     },
   };
 
@@ -94,23 +96,23 @@ export class Dashboard {
       prevBtnText: 'Anterior',
       doneBtnText: 'OK',
       steps: [
-        { 
-          element: '#barras', 
-          popover: { 
-            title: 'Grafico de barras', 
+        {
+          element: '#barras',
+          popover: {
+            title: 'Grafico de barras',
             description: 'Ejemplo de barras',
-            side: "bottom", 
-            align: 'start' 
-          } 
+            side: "bottom",
+            align: 'start'
+          }
         },
-        { 
-          element: '#pastel', 
-          popover: { 
-            title: 'Grafico de pastel', 
+        {
+          element: '#pastel',
+          popover: {
+            title: 'Grafico de pastel',
             description: 'Ejemplo de pastel',
-            side: "bottom", 
-            align: 'start' 
-          } 
+            side: "bottom",
+            align: 'start'
+          }
         }
       ]
     });
