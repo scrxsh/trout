@@ -19,9 +19,10 @@ export class Sidebar {
 
   protected menuItems = [
     { label: 'Dashboard', route: '/dashboard', icon: 'dashboard' },
+    { label: 'Feed', route: '/news', icon: 'newsmode'},
     { label: 'Alertas', route: '/alertas', icon: 'emergency_home' },
-    { label: 'Health Trends', route: '/b', icon: 'trending_up' },
-    { label: 'Patient Demographics', route: '/a', icon: 'groups' },
+    { label: 'Pacientes', route: '/a', icon: 'groups' },
+    { label: 'Tendencias', route: '/b', icon: 'trending_up' },
   ];
 
   private readonly shared = computed(

@@ -8,6 +8,7 @@ import { loginGuard } from './core/guards/login-guard';
 import { loginPublicGuard } from './core/guards/login-guard-public';
 import { Layout } from './pages/layout/layout';
 import { Events } from './modules/warnings/events/events';
+import { News } from './modules/news/news';
 
 
 //Pruebas temporales***
@@ -44,6 +45,10 @@ export const routes: Routes = [
             {
                 path: 'alertas',
                 component: Events
+            },
+            {
+                path: 'news',
+                component: News
             }
         ]
     },
