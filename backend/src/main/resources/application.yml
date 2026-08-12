@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: trout-backend
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  jwtKeys:
+    privateKeyPath: ${PRIVATE_KEY}
+    publicKeyPath: ${PUBLIC_KEY}

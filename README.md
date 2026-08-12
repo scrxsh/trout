@@ -1,7 +1,7 @@
 
 # Trout
 
-Este proyecto fue generado utilizando [Angular CLI](https://github.com/angular/angular-cli) versión 21.2.4 y [Spring Boot](https://spring.io/projects/spring-boot) versión 4.0.3 creado con [Spring Initialzr](https://start.spring.io/) para el semillero SISLA de la Fundación Universitaria de San Gil, sede Chiquinquirá
+Este proyecto fue generado utilizando [Angular CLI](https://github.com/angular/angular-cli) versión 22+ y [Spring Boot](https://spring.io/projects/spring-boot) versión 4.1.0 creado con [Spring Initialzr](https://start.spring.io/) para el semillero SISLA de la Fundación Universitaria de San Gil, sede Chiquinquirá
 
 
 ## Servidor de desarrollo (Frontend)
@@ -9,7 +9,7 @@ Este proyecto fue generado utilizando [Angular CLI](https://github.com/angular/a
 Para instalar todas las librerias necesarias, ejecuta:
 
 ```bash
-npm i -i
+npm i
 ```
 Para iniciar un servidor de desarrollo local, ejecuta:
 ```bash
