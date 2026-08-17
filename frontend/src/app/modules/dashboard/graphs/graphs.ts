@@ -8,19 +8,19 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { ChartConfiguration, ChartData, ChartType, Chart, registerables } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { driver } from 'driver.js';
-import { Heatmap } from '../heatmap/heatmap';
+//import { driver } from 'driver.js';
+import { Heatmap } from './heatmap/heatmap';
 
 Chart.register(...registerables);
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-graphs',
   imports: [BaseChartDirective, Heatmap],
-  templateUrl: './dashboard.html',
+  templateUrl: './graphs.html',
   changeDetection: ChangeDetectionStrategy.Eager,
-  styleUrl: './dashboard.css',
+  styleUrl: './graphs.css',
 })
-export class Dashboard {
+export class Graphs {
   public isBrowser: boolean;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
@@ -73,6 +73,8 @@ export class Dashboard {
     ],
   };
 
+
+
   public chartOptions: ChartConfiguration['options'] = {
     responsive: true,
     maintainAspectRatio: false,
@@ -85,8 +87,8 @@ export class Dashboard {
       legend: { display: false },
     },
   };
-
   /*
+
   iniciarTour(){
     const driverObj = driver({
       overlayColor: '#BDB1AF',

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { Login } from './modules/auth/login/components/login/login';
 import { Register } from './modules/auth/register/register';
-import { Dashboard } from './modules/charts/components/dashboard/dashboard';
+
 
 //Importar los guardianes
 import { loginGuard } from './core/guards/login-guard';
@@ -11,11 +11,11 @@ import { Events } from './modules/warnings/events/events';
 import { News } from './modules/news/news';
 
 
-//Pruebas temporales***
-/*
+
 import { Pages } from './pages/pruebas/pages/pages';
 import { Colors } from './pages/pruebas/colors/colors';
-*/
+import { Dashboard } from './modules/dashboard/dashboard';
+
 
 export const routes: Routes = [
     {
@@ -52,7 +52,7 @@ export const routes: Routes = [
             }
         ]
     },
-    /*
+
     {
       path: 'colores',
       component: Colors
@@ -60,7 +60,7 @@ export const routes: Routes = [
     {
       path: 'pages',
       component: Pages
-    }*/
+    }
 ];
 
 

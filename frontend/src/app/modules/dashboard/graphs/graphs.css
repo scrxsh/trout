@@ -1,0 +1,20 @@
+
+@reference "../../../../styles.css";
+
+
+
+.chart-card {
+  @apply bg-surface p-5 shadow-card;
+
+}
+.chart-wrapper {
+  width: 100%;
+}
+
+.chart-title {
+  @apply text-xl font-bold text-on-surface mb-1;
+}
+
+.chart-subtitle {
+  @apply text-sm text-outline mb-2;
+}

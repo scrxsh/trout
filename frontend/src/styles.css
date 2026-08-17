@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: "Open Sans";
-    src: 
+    src:
         url(../public/assets/fonts/open-sans.woff2) format("woff2"),
         url(../public/assets/fonts/open-sans.ttf) format("truetype");
     font-display: swap;
@@ -56,6 +56,7 @@
     --color-surface-tint: #395e9b;
 
     --background-image-hero-gradient: linear-gradient(135deg, #1a4480 25%, #d7e2ff 100%);
+    --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 :root {
