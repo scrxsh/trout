@@ -5,33 +5,27 @@
         <div class="chart-card rounded-2xl" id="barras">
           <h2 class="chart-title">Reportes por barrios</h2>
           <p class="chart-subtitle">Reportes realizados por cada barrio de la ciudad</p>
-          @defer (on timer(50ms)) {
               <div class="chart-wrapper h-[80%]">
-              <canvas baseChart
+              <canvas
+                  baseChart
                   [data]="barChartData"
-                  [options]="chartOptions"
+                  [options]="chartOptions()"
                   [type]="barChartType">
               </canvas>
               </div>
-          } @placeholder {
-              <div class="chart-wrapper"></div>
-          }
         </div>
         <!--GRAFICO DE PASTEL-->
         <div class="chart-card rounded-2xl" id="pastel">
           <h2 class="chart-title">Distribución de Enfermedades</h2>
           <p class="chart-subtitle">Proporción de casos por tipo de enfermedad</p>
-          @defer (on timer(50ms)) {
               <div class="chart-wrapper h-[80%]">
-              <canvas baseChart
+              <canvas
+                  baseChart
                   [data]="pieChartData"
-                  [options]="chartOptions"
+                  [options]="chartOptions()"
                   [type]="pieChartType">
               </canvas>
               </div>
-          } @placeholder {
-              <div class="chart-wrapper"></div>
-          }
         </div>
         <!--MAPA DE CALOR-->
         <div class="bg-surface p-8 rounded-3xl shadow-[0_12px_32px_rgba(27,27,27,0.04)] border border-outline-variant/5 flex flex-col">

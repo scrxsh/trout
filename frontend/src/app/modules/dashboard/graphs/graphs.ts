@@ -1,16 +1,12 @@
-import {
-  afterNextRender,
-  Component,
-  Inject,
-  PLATFORM_ID,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import {afterNextRender, Component, Inject, PLATFORM_ID, ChangeDetectionStrategy, inject, effect, signal} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ChartConfiguration, ChartData, ChartType, Chart, registerables } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 //import { driver } from 'driver.js';
 import { Heatmap } from './heatmap/heatmap';
 
+
+import { ThemeService } from '../../../core/theme/services/theme.service';
 Chart.register(...registerables);
 
 @Component({
@@ -20,48 +16,42 @@ Chart.register(...registerables);
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './graphs.css',
 })
+
+
 export class Graphs {
+
   public isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
-    afterNextRender(() => {
-      //this.iniciarTour();
-      Chart.defaults.font.family = 'Open Sans';
-      Chart.defaults.font.size = 12;
-    });
-  }
-
+  private themeService = inject(ThemeService);
 
   public barChartType: ChartType = 'bar';
   public pieChartType: ChartType = 'pie';
 
   public barChartData: ChartData<'bar'> = {
-    labels: [
-      'Boyacá Alto',
-      'Versalles',
-      'San Mateo',
-      'Barrio Obrero',
-      'Jardin del Norte',
-      'Belencito',
-      'Zonas Rurales',
-    ],
-    datasets: [
-      {
-        data: [100, 250, 320, 180, 200, 200, 350],
-        backgroundColor: [
-          '#1a4480',
-          '#cf3a3a',
-          '#284677',
-          '#b83232',
-          '#0b5694',
-          '#9b2929',
-          '#3b5d93'
-        ],
-      },
-    ],
+  labels: [
+    'Boyacá Alto',
+    'Versalles',
+    'San Mateo',
+    'Barrio Obrero',
+    'Jardin del Norte',
+    'Belencito',
+    'Zonas Rurales',
+  ],
+  datasets: [
+    {
+      data: [100, 250, 320, 180, 200, 200, 350],
+      backgroundColor: [
+        '#1a4480',
+        '#cf3a3a',
+        '#284677',
+        '#b83232',
+        '#0b5694',
+        '#9b2929',
+        '#3b5d93'
+      ],
+    },
+  ],
   };
-
 
   public pieChartData: ChartData<'pie'> = {
     labels: ['Tos Ferina', 'Gripa', 'Dengue', 'Tuberculosis', 'Cólera', 'Tétanos', 'Salmonelosis', 'Fiebre Tifoidea', 'Brucelosis', 'Rabia', 'Zika', 'Chikunguña', 'Virus del Papiloma Humano (VPH)', 'Hepatitis A'],
@@ -74,20 +64,73 @@ export class Graphs {
   };
 
 
+  public chartOptions = signal<ChartConfiguration['options']>({
+    scales: {
+    x: {
+      ticks: {
+        color: this.themeService.isDark() ? '#ffffff' : '#000000'
+      }
+    },
 
-  public chartOptions: ChartConfiguration['options'] = {
+    y: {
+      ticks: {
+        color: this.themeService.isDark() ? '#ffffff' : '#000000'
+      }
+    }
+  },
     responsive: true,
     maintainAspectRatio: false,
     animation: {
       duration: 1000, // Tiempo de la animación (1 segundo)
       easing: 'easeOutQuart', // Movimiento elegante (empieza rápido, termina lento)
     },
-    // -----------------------------
     plugins: {
       legend: { display: false },
     },
-  };
+  });
+
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+
+    this.isBrowser = isPlatformBrowser(this.platformId);
+
+    afterNextRender(() => {
+      //this.iniciarTour();
+      Chart.defaults.font.family = 'Open Sans';
+      Chart.defaults.font.size = 12;
+    });
+
+
+    effect(() => {
+      const color = this.themeService.isDark() ? '#ffffff' : '#000000';
+
+      this.chartOptions.update(opts => ({
+        ...opts,
+        scales: {
+          ...opts?.scales,
+          x: {...opts?.scales?.['x'], ticks: { color }},
+          y: {...opts?.scales?.['y'], ticks: { color }},
+        },
+      }));
+    });
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   /*
+
 
   iniciarTour(){
     const driverObj = driver({

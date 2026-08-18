@@ -2,7 +2,7 @@
 
 
 .sidebar-container {
-    @apply flex flex-col fixed left-0 top-0 py-8 space-y-6 bg-white h-screen w-64 rounded-4xl z-50;
+    @apply flex flex-col fixed left-0 top-0 py-8 space-y-6 bg-surface h-screen w-64 rounded-4xl z-50;
 }
 
 .sidebar-container.collapsed {

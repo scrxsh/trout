@@ -7,12 +7,12 @@ import { Register } from './modules/auth/register/register';
 import { loginGuard } from './core/guards/login-guard';
 import { loginPublicGuard } from './core/guards/login-guard-public';
 import { Layout } from './pages/layout/layout';
-import { Events } from './modules/warnings/events/events';
+import { Events } from './modules/events/events';
 import { News } from './modules/news/news';
+import { Social } from './modules/social/social';
 
 
 
-import { Pages } from './pages/pruebas/pages/pages';
 import { Colors } from './pages/pruebas/colors/colors';
 import { Dashboard } from './modules/dashboard/dashboard';
 
@@ -43,24 +43,25 @@ export const routes: Routes = [
                 component: Dashboard
             },
             {
-                path: 'alertas',
+                path: 'alerts',
                 component: Events
             },
             {
                 path: 'news',
                 component: News
-            }
+            },
+            {
+                path: 'social',
+                component: Social
+            },
         ]
     },
-
+    /*
     {
       path: 'colores',
       component: Colors
     },
-    {
-      path: 'pages',
-      component: Pages
-    }
+    */
 ];
 
 

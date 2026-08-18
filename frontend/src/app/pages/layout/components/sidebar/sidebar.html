@@ -35,13 +35,20 @@
         </a>
         <div class="mt-4 flex items-center space-x-3 px-4">
             @if(!sidebarService.collapsed()){
-                <div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-primary text-xs font-bold"><span class="material-symbols-outlined">account_circle</span></div>
+                <div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-primary text-xs! font-bold"><span class="material-symbols-outlined">account_circle</span></div>
                 <div class="flex-1">
-                    <p class="text-xs font-bold leading-none">Admin</p>
-                    <p class="text-[10px] text-outline">Adm. Sistema</p>
+                    <p class="text-xs font-bold leading-none">Usuario</p>
+                    <p class="text-[9px] text-outline">Admin</p>
                 </div>
             }
-            <span class="material-symbols-outlined text-shadow-on-surface cursor-pointer hover:text-error transition-colors" (click)="cerrarSesion()">logout</span>
+
+            @if(isDarkMode()) {
+              <span class="material-symbols-outlined text-xl! text-shadow-on-surface cursor-pointer hover:text-error transition-colors"(click)="cambiarTema()">wb_sunny</span>
+            }@else {
+              <span class="material-symbols-outlined text-xl! text-shadow-on-surface cursor-pointer hover:text-error transition-colors"(click)="cambiarTema()">bedtime</span>
+            }
+            
+            <span class="material-symbols-outlined text-xl! text-shadow-on-surface cursor-pointer hover:text-error transition-colors" (click)="cerrarSesion()">logout</span>
         </div>
     </div>
 </aside>
