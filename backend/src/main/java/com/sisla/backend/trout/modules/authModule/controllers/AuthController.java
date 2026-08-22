@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("api/v1/auth")
+@RequestMapping("${URL_API}auth")
 
 public class AuthController {
     @Autowired

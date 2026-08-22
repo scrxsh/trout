@@ -8,7 +8,7 @@ import { loginGuard } from './core/guards/login-guard';
 import { loginPublicGuard } from './core/guards/login-guard-public';
 import { Layout } from './pages/layout/layout';
 import { Events } from './modules/events/events';
-import { News } from './modules/news/news';
+import { Feed } from './modules/feed/feed';
 import { Social } from './modules/social/social';
 
 
@@ -48,7 +48,7 @@ export const routes: Routes = [
             },
             {
                 path: 'news',
-                component: News
+                component: Feed
             },
             {
                 path: 'social',

@@ -12,7 +12,7 @@ export class LoginService {
 
   /* Inyectar Http  y luego la api Fetch ya viene con HTTP Client */
   private http = inject(HttpClient);
-  /* Imporatar las cookies para el login permanente */
+  /* Importar las cookies para el login permanente */
   private cookieService = inject(CookieService);
   private apiUrl = 'http://localhost:8080/api/v1/auth/login';
   private router = inject(Router);

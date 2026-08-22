@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 @RestController
-@RequestMapping("api/v1/geolocation")
+@RequestMapping("${URL_API}geolocation")
 
 public class GeoController {
     @Autowired
