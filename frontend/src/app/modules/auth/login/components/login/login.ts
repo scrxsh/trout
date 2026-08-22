@@ -48,7 +48,7 @@ export class Login {
 
           //Redireccion al dar click en el boton, diferente al guardian, el guardian es en la url
 
-          this.router.navigate(['/dashboard']).then((nav) => {
+          this.router.navigate(['/inicio']).then((nav) => {
             if (nav) {
               this.loginForm.reset();
             }

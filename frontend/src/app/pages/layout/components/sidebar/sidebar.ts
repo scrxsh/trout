@@ -19,11 +19,12 @@ export class Sidebar {
   }
 
   protected menuItems = [
+    { label: 'Inicio', route: '/inicio', icon: 'home' },
     { label: 'Dashboard', route: '/dashboard', icon: 'dashboard' },
-    { label: 'Alertas', route: '/alerts', icon: 'emergency_home'},
-    { label: 'Feed', route: '/news', icon: 'newsmode' },
+    { label: 'Alertas', route: '/alertas', icon: 'emergency_home'},
+    { label: 'Feed', route: '/noticias', icon: 'newsmode' },
     { label: 'Social', route: '/social', icon: 'groups' },
-    { label: 'Tendencias', route: '/b', icon: 'trending_up' },
+    { label: 'Tendencias', route: '/tendencias', icon: 'trending_up' },
   ];
 
   private readonly shared = computed(

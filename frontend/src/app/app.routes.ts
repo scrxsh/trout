@@ -15,6 +15,8 @@ import { Social } from './modules/social/social';
 
 import { Colors } from './pages/pruebas/colors/colors';
 import { Dashboard } from './modules/dashboard/dashboard';
+import { Inicio } from './pages/inicio/inicio';
+import { Trends } from './modules/trends/trends';
 
 
 export const routes: Routes = [
@@ -30,7 +32,7 @@ export const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'inicio',
         pathMatch: 'full',
     },
     {
@@ -39,21 +41,29 @@ export const routes: Routes = [
         canActivateChild: [loginGuard],
         children: [
             {
+              path: 'inicio',
+              component: Inicio
+            },
+            {
                 path: 'dashboard',
                 component: Dashboard
             },
             {
-                path: 'alerts',
+                path: 'alertas',
                 component: Events
             },
             {
-                path: 'news',
+                path: 'noticias',
                 component: Feed
             },
             {
                 path: 'social',
                 component: Social
             },
+            {
+                path: 'tendencias',
+                component: Trends
+            }
         ]
     },
     /*
