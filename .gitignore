@@ -65,3 +65,6 @@ frontend/.angular/
 
 #Pruebas
 frontend/src/app/pages/pruebas/
+
+#Repomix
+repomix-output.xml 
