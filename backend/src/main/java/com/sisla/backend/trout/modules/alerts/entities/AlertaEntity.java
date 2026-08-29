@@ -36,6 +36,6 @@ public class AlertaEntity {
     private String estado;
 
     @Column(name="is_destacada", nullable = false)
-    private boolean isDestacada;
+    private boolean destacada;
 
 }

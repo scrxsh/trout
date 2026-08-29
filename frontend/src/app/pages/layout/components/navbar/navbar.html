@@ -1,29 +1,39 @@
-<header class="sticky bg-surface/80 -my-3.5 mb-3.5 top-0 z-40 backdrop-blur-sm flex justify-between items-center px-8 py-4 shadow-[0_12px_32px_rgba(27,27,27,0.06)] rounded-2xl">
-    <div class="flex items-center space-x-8">
-        <nav class="hidden md:flex space-x-6">
-            <a class="text-tertiary font-bold border-b-2 border-tertiary transition-colors duration-300" href="#">Analytics</a>
-            <a class="text-on-background font-medium hover:text-secondary transition-colors duration-300" href="#">Perspectivas</a>
-            <a class="text-on-background font-medium hover:text-secondary transition-colors duration-300" href="#">Reportes</a>
-        </nav>
-    </div>
-    <div class="flex items-center space-x-4">
-    <!-- Global Filters -->
-    <div class="flex bg-surface-container-low rounded-full px-4 py-2 space-x-4">
-        <div class="flex items-center space-x-2">
-            <span class="material-symbols-outlined text-primary text-lg">calendar_today</span>
-            <span class="text-sm font-medium">Ultimo mes</span>
-            <span class="material-symbols-outlined text-xs" data-icon="expand_more">expand_more</span>
+<header class="sticky bg-surface/80 -my-3.5 mb-3.5 top-0 z-40 backdrop-blur-sm flex justify-between items-center px-9 py-6 shadow-[0_12px_32px_rgba(27,27,27,0.06)] rounded-2xl">
+    <div class="flex items-center gap-8">
+      <div class="hidden lg:flex items-center gap-6 text-sm text-on-surface-variant font-medium">
+        <div class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined">location_on</span>
+          <span>Chiquinquirá, Colombia</span>
         </div>
-        <div class="w-px h-4 bg-outline-variant/30 my-auto"></div>
-        <div class="flex items-center space-x-2">
-            <span class="material-symbols-outlined text-primary text-lg">demography</span>
-            <span class="text-sm font-medium">Barrio</span>
-            <span class="material-symbols-outlined text-xs">expand_more</span>
-        </div>
+      <div class="flex items-center gap-1.5 border-l border-outline-variant/30 pl-6">
+        <span class="material-symbols-outlined text">cloud</span>
+        <span>16°C • Nublado</span>
+      </div>
+      <div class="flex items-center gap-1.5 border-l border-outline-variant/30 pl-6">
+      <span class="material-symbols-outlined text-[18px]">map</span>
+      <span>Sector: Norte</span>
+      </div>
+      </div>
     </div>
-    <div class="relative">
-        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
-        <input class="bg-surface-container-high border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary-fixed w-48 transition-all" placeholder="Buscar [Ctrl+K]..." type="text"/>
-    </div>
+    <div class="flex items-center gap-3">
+      <button class="p-2 rounded-full hover:bg-surface-container-highest transition-colors relative flex items-center justify-center" (click)="cambiarTema()">
+        <span class="material-symbols-outlined">
+          @if(isDarkMode()){
+            wb_sunny
+          }@else {
+            bedtime
+          }
+        </span>
+      </button>
+      <button class="p-2 rounded-full hover:bg-surface-container-highest transition-colors relative flex items-center justify-center">
+        <span class="material-symbols-outlined">notifications</span>
+        <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-secondary rounded-full"></span>
+      </button>
+      <button class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:opacity-90 transition-opacity">
+        <span class="material-symbols-outlined text-sm">person</span>
+      </button>
     </div>
 </header>
+
+
+

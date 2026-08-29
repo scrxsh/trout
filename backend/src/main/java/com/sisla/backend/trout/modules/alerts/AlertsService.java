@@ -31,7 +31,7 @@ public class AlertsService {
                 fecha(alertaDTO.getFecha()).
                 tipo(alertaDTO.getTipo()).
                 estado(alertaDTO.getEstado()).
-                isDestacada(alertaDTO.isDestacada()).
+                destacada(alertaDTO.isDestacada()).
                 build();
         return toDTO(alertsRepository.save(alerta));
     }

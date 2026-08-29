@@ -1,228 +1,147 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, computed, ChangeDetectionStrategy, inject } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
-import { Alert, AlertStatus, AlertType } from './events-model';
+import { Alerta, EstadoAlerta, TipoAlerta } from './models/alerts.model';
+import { AlertasService } from './services/alertas.service';
+import { AlertModal } from './components/alert-modal/alert-modal';
 
 @Component({
   selector: 'app-events',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AlertModal],
   templateUrl: './events.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './events.css',
 })
-export class Events implements OnInit {
-  //Mostrar el modal para la señal
-  showModal = signal(false);
-  //Editar la alerta
-  editingAlert = signal<Alert | null>(null);
 
-  //Formulario estatico sin backend
-  form = signal<Omit<Alert, 'id'>>({
-    title: '',
-    description: '',
-    date: new Date().toISOString().split('T')[0],
-    type: 'Informativa',
-    status: 'Activa',
-    featured: false,
+
+export class Events {
+
+  private readonly alertasService = inject(AlertasService);
+
+  readonly alertasResource = rxResource({
+    stream: () => this.alertasService.getAlertas()
   });
 
-  //Filtros de las alertas
-  searchTerm = signal('');
-  filterType = signal<AlertType | 'Todas'>('Todas');
-  filterStatus = signal<AlertStatus | 'Todas'>('Todas');
-  showFilterPanel = signal(false);
+  tiposAlerta: TipoAlerta[] = ['Critica', 'Advertencia', 'Informativa'];
+  estadosAlerta: EstadoAlerta[] = ['Activa', 'Programada', 'Resuelta', 'Completada'];
+//Estados visuales
+  mostrarModal = signal(false);
+  editandoAlerta = signal<Alerta | null>(null);
 
-  //Llenar el JSON de las alertas
-  alerts = signal<Alert[]>([
-    {
-      id: '1',
-      title: 'Aumento de casos de gripe en la comunidad',
-      description: 'Se ha detectado un incremento del 40% en casos de gripe en el último mes.',
-      date: '2024-10-25',
-      type: 'Critica',
-      status: 'Activa',
-      featured: true,
-    },
-    {
-      id: '2',
-      title: 'Picos de calor la próxima semana',
-      description: 'Temperaturas esperadas de hasta 35°C. Recomendaciones de hidratación.',
-      date: '2024-10-24',
-      type: 'Advertencia',
-      status: 'Activa',
-      featured: true,
-    },
-    {
-      id: '3',
-      title: 'Nueva campaña de vacunación',
-      description: 'Disponible en el centro comunitario del 20 al 30 de octubre.',
-      date: '2024-10-23',
-      type: 'Informativa',
-      status: 'Programada',
-      featured: true,
-    },
-    {
-      id: '4',
-      title: 'Brote de dengue en zona norte',
-      description: 'Se reportaron 15 casos confirmados en el sector norte.',
-      date: '2024-10-20',
-      type: 'Critica',
-      status: 'Resuelta',
-    },
-    {
-      id: '5',
-      title: 'Lluvias intensas esperadas',
-      description: 'Precipitaciones de hasta 80mm durante el fin de semana.',
-      date: '2024-10-15',
-      type: 'Advertencia',
-      status: 'Resuelta',
-    },
-    {
-      id: '6',
-      title: 'Jornada de salud mental',
-      description: 'Actividad gratuita de bienestar emocional para toda la comunidad.',
-      date: '2024-10-10',
-      type: 'Informativa',
-      status: 'Completada',
-    },
-  ]);
+  bordeAlerta: Record<string, string> = {
+    'Critica': 'border-[#f73e44]',
+    'Advertencia': 'border-yellow-500',
+    'Informativa': 'border-green-500',
+  };
 
-  // ── Featured alerts (top cards) ──────────────────────────
-  featuredAlerts = computed(() => this.alerts().filter((a) => a.featured));
+  colorAlerta: Record<string, string> = {
+    'Critica': 'bg-red-500',
+    'Advertencia': 'bg-yellow-500',
+    'Informativa': 'bg-green-500',
+  };
 
-  // ── Filtered table rows ──────────────────────────────────
-  filteredAlerts = computed(() => {
-    const term = this.searchTerm().toLowerCase();
-    const type = this.filterType();
-    const status = this.filterStatus();
+  colorEstado: Record<string, string> = {
+    'Activa': 'bg-red-100 text-red-700',
+    'Programada': 'bg-cyan-100 text-cyan-700',
+    'Resuelta': 'bg-gray-100 text-gray-600',
+    'Completada': 'bg-emerald-100 text-emerald-700',
+  }
 
-    return this.alerts()
-      .filter((a) => !a.featured)
-      .filter(
-        (a) => a.title.toLowerCase().includes(term) || a.description.toLowerCase().includes(term),
-      )
-      .filter((a) => type === 'Todas' || a.type === type)
-      .filter((a) => status === 'Todas' || a.status === status);
+//Filtros
+  buscarTermino = signal('');
+  filtroTipo = signal<TipoAlerta | 'Todas'>('Todas');
+  filtroEstado = signal<EstadoAlerta | 'Todos'>('Todos');
+  mostrarFiltros = signal(false);
+
+
+//Datos del backend
+  alertasDestacadas = computed(() => {
+    const alertas = this.alertasResource.value() ?? [];
+    return alertas.filter((a) => a.destacada).slice(0,3);
   });
 
-  alertTypes: AlertType[] = ['Critica', 'Advertencia', 'Informativa'];
-  alertStatuses: AlertStatus[] = ['Activa', 'Programada', 'Resuelta', 'Completada'];
+//Filtrar las alertas
+  alertasFiltradas = computed(() => {
+    const termino = this.buscarTermino().toLowerCase();
+    const tipo = this.filtroTipo();
+    const estado = this.filtroEstado();
+    const alertas = this.alertasResource.value() ?? [];
+    const idDestacadasMostrads = new Set(this.alertasDestacadas().map(a => a.id));
 
-  ngOnInit() {}
-
-  // ── CRUD ─────────────────────────────────────────────────
-  openNew() {
-    this.editingAlert.set(null);
-    this.form.set({
-      title: '',
-      description: '',
-      date: new Date().toISOString().split('T')[0],
-      type: 'Informativa',
-      status: 'Activa',
-      featured: false,
+    return alertas
+          .filter((a) => !idDestacadasMostrads.has(a.id))
+          .filter((a) => a.titulo.toLowerCase().includes(termino) || a.descripcion.toLowerCase().includes(termino))
+          .filter((a) => tipo === 'Todas' || a.tipo === tipo)
+          .filter((a) =>  estado === 'Todos' || a.estado === estado)
     });
-    this.showModal.set(true);
+
+//Metodos para la modal
+  abrirNueva(){
+    this.editandoAlerta.set(null);
+    this.mostrarModal.set(true);
   }
 
-  openEdit(alert: Alert) {
-    this.editingAlert.set(alert);
-    this.form.set({ ...alert });
-    this.showModal.set(true);
+  abrirEditar(alerta: Alerta){
+    this.editandoAlerta.set(alerta);
+    this.mostrarModal.set(true);
   }
 
-  closeModal() {
-    this.showModal.set(false);
-    this.editingAlert.set(null);
+  cerrarModal(){
+    this.mostrarModal.set(false);
+    this.editandoAlerta.set(null);
   }
 
-  saveAlert() {
-    const f = this.form();
-    if (!f.title.trim() || !f.description.trim()) return;
 
-    const editing = this.editingAlert();
-    if (editing) {
-      this.alerts.update((list) => list.map((a) => (a.id === editing.id ? { ...a, ...f } : a)));
+  guardarAlerta(datosGenerados: Omit<Alerta, 'id'>) {
+    const editando = this.editandoAlerta();
+
+    if (editando) {
+      this.alertasService.actualizarAlerta(editando.id, { ...editando, ...datosGenerados }).subscribe({
+        next: (alertaActualizada) => {
+          // Actualización optimista del recurso
+          this.alertasResource.value.update((lista) =>
+            (lista ?? []).map((a) => (a.id === alertaActualizada.id ? alertaActualizada : a))
+          );
+          this.cerrarModal();
+        }
+      });
     } else {
-      const newAlert: Alert = {
-        ...f,
-        id: Date.now().toString(),
-      };
-      this.alerts.update((list) => [newAlert, ...list]);
+      this.alertasService.crearAlerta(datosGenerados).subscribe({
+        next: (nuevaAlerta) => {
+          // Inserción optimista del recurso
+          this.alertasResource.value.update((lista) => [nuevaAlerta, ...(lista ?? [])]);
+          this.cerrarModal();
+        }
+      });
     }
-    this.closeModal();
   }
 
-  deleteAlert(id: string) {
-    this.alerts.update((list) => list.filter((a) => a.id !== id));
+  eliminarAlerta(id: number){
+    this.alertasService.eliminarAlerta(id).subscribe({
+      next: () => {
+        this.alertasResource.value.update((lista) => (lista ?? []).filter((a) => a.id !== id)
+        );
+      }
+    });
   }
 
-  // ── Patch form field ─────────────────────────────────────
-  patchForm(patch: Partial<Omit<Alert, 'id'>>) {
-    this.form.update((f) => ({ ...f, ...patch }));
-  }
-
-  // ── Style helpers ─────────────────────────────────────────
-  featuredCardClass(type: AlertType): string {
-    const map: Record<AlertType, string> = {
+  featuredCardClass(tipo: TipoAlerta): string {
+    const map: Record<TipoAlerta, string> = {
       Critica: 'featured-card--red',
       Advertencia: 'featured-card--yellow',
       Informativa: 'featured-card--green',
     };
-    return map[type];
+    return map[tipo];
   }
 
-  featuredIconClass(type: AlertType): string {
-    const map: Record<AlertType, string> = {
-      Critica: 'icon-critica',
-      Advertencia: 'icon-advertencia',
-      Informativa: 'icon-informativa',
+  iconPath(tipo: TipoAlerta): string {
+    const paths: Record<TipoAlerta, string> = {
+      Critica: 'M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z',
+      Advertencia: 'M12 10.5v3.75m0 0h.008v.008H12v-.008zm.375-9.75a9 9 0 110 18 9 9 0 010-18zm0 0V3m0 1.5v.75',
+      Informativa: 'M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z',
     };
-    return map[type];
+    return paths[tipo];
   }
 
-  typeBadgeClass(type: AlertType): string {
-    const map: Record<AlertType, string> = {
-      Critica: 'badge badge--red',
-      Advertencia: 'badge badge--yellow',
-      Informativa: 'badge badge--blue',
-    };
-    return map[type];
-  }
-
-  statusBadgeClass(status: AlertStatus): string {
-    const map: Record<AlertStatus, string> = {
-      Activa: 'badge badge--red',
-      Programada: 'badge badge--teal',
-      Resuelta: 'badge badge--gray',
-      Completada: 'badge badge--green',
-    };
-    return map[status];
-  }
-
-  featuredStatusLabel(status: AlertStatus): string {
-    return status;
-  }
-
-  featuredStatusClass(status: AlertStatus): string {
-    const map: Record<AlertStatus, string> = {
-      Activa: 'status-pill status-pill--activa',
-      Programada: 'status-pill status-pill--programada',
-      Resuelta: 'status-pill status-pill--resuelta',
-      Completada: 'status-pill status-pill--completada',
-    };
-    return map[status];
-  }
-
-  // ── Icon SVG path helpers ─────────────────────────────────
-  iconPath(type: AlertType): string {
-    const paths: Record<AlertType, string> = {
-      Critica:
-        'M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z',
-      Advertencia:
-        'M12 10.5v3.75m0 0h.008v.008H12v-.008zm.375-9.75a9 9 0 110 18 9 9 0 010-18zm0 0V3m0 1.5v.75',
-      Informativa:
-        'M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z',
-    };
-    return paths[type];
-  }
 }

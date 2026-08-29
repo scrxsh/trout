@@ -17,5 +17,5 @@ public class AlertaDTO {
     private LocalDate fecha;
     private String tipo;
     private String estado;
-    private boolean isDestacada;
+    private boolean destacada;
 }

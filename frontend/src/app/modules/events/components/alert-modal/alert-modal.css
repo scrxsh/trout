@@ -1,0 +1,26 @@
+@reference "../../../../../styles.css";
+
+
+.input-title {
+  @apply block text-sm font-semibold text-on-surface;
+}
+
+.input-form {
+  @apply w-full bg-surface-container/45 border-tertiary-container/20 rounded-lg px-4 py-3 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary-container focus:bg-on-primary-container/10 transition-all duration-200 outline-none;
+}
+
+.checkbox-s{
+  @apply size-5 cursor-pointer appearance-none rounded-md
+         border-2 border-tertiary-container/30
+         bg-surface-container/45
+         transition-all duration-200
+         checked:border-primary
+         checked:bg-primary
+         checked:shadow-sm
+         hover:border-primary/60
+         focus:outline-none
+         focus:ring-2 focus:ring-primary/30
+         focus:ring-offset-2
+         focus:ring-offset-surface-container
+         disabled:cursor-not-allowed disabled:opacity-50;
+}

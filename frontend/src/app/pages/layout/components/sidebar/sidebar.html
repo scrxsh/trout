@@ -33,22 +33,11 @@
                 <span class="font-medium text-sm">Configuración</span>
             }
         </a>
-        <div class="mt-4 flex items-center space-x-3 px-4">
+        <a class="footer-sidebar cursor-pointer" [class.collapsed]="sidebarService.collapsed()" (click)="cerrarSesion()" >
+            <span class="material-symbols-outlined" data-icon="settings">logout</span>
             @if(!sidebarService.collapsed()){
-                <div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-primary text-xs! font-bold"><span class="material-symbols-outlined">account_circle</span></div>
-                <div class="flex-1">
-                    <p class="text-xs font-bold leading-none">Usuario</p>
-                    <p class="text-[9px] text-outline">Admin</p>
-                </div>
+                <span class="font-medium text-sm">Cerrrar sesión</span>
             }
-
-            @if(isDarkMode()) {
-              <span class="material-symbols-outlined text-xl! text-shadow-on-surface cursor-pointer hover:text-error transition-colors"(click)="cambiarTema()">wb_sunny</span>
-            }@else {
-              <span class="material-symbols-outlined text-xl! text-shadow-on-surface cursor-pointer hover:text-error transition-colors"(click)="cambiarTema()">bedtime</span>
-            }
-
-            <span class="material-symbols-outlined text-xl! text-shadow-on-surface cursor-pointer hover:text-error transition-colors" (click)="cerrarSesion()">logout</span>
-        </div>
+        </a>
     </div>
 </aside>

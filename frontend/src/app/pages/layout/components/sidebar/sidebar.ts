@@ -2,7 +2,7 @@ import { Component, inject, computed, ChangeDetectionStrategy } from '@angular/c
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LoginService } from '../../../../modules/auth/login/services/login-service';
 import { CollapsedSidebar } from '../../services/collapsed-sidebar';
-import { ThemeService } from '../../../../core/theme/services/theme.service';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -48,16 +48,6 @@ export class Sidebar {
 
   protected getItemClass(isActive: boolean): string {
     return isActive ? this.navActive() : this.navBase();
-  }
-
-  private themeService = inject(ThemeService)
-
-  cambiarTema(){
-    this.themeService.toggleTheme();
-  }
-
-  isDarkMode() {
-    return this.themeService.isDark();
   }
 
   private loginService = inject(LoginService);
