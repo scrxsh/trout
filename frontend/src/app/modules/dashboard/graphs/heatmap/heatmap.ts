@@ -1,12 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  ViewChild,
-  afterNextRender,
-  inject,
-  PLATFORM_ID,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, ElementRef,ViewChild,afterNextRender,inject,PLATFORM_ID,ChangeDetectionStrategy} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
 import { LeafletService } from './services/leaflet.service';

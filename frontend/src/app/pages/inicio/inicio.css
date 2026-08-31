@@ -1,0 +1,59 @@
+@reference "../../../styles.css";
+
+/* 1. CLASE BASE: Contiene la imagen y la configuración estructural */
+.hero-bg-base {
+    @apply bg-cover bg-center bg-no-repeat overflow-hidden;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2c/Plaza_y_bas%C3%ADlica_de_Nuestra_Se%C3%B1ora_del_Rosario_de_Chiquinquir%C3%A1.jpg');
+}
+
+/* 2. MÁSCARA COMÚN: Aplica el efecto borroso (glassmorphism) siempre */
+.hero-bg-base::before {
+    content: '';
+    @apply absolute inset-0 backdrop-blur-xs transition-colors duration-300;
+    z-index: 0;
+}
+
+/* 3. MODIFICADORES: Solo cambian el tinte de la máscara */
+.mask-light::before {
+    @apply bg-surface/60; /* Ajusta la opacidad si necesitas más o menos contraste */
+}
+
+.mask-dark::before {
+    @apply bg-gray-900/60; /* Un tono oscuro que combine con el resto de tu app */
+}
+
+
+.floating-card {
+  @apply bg-surface-container-low rounded-2xl p-8 shadow-floating flex flex-col transition-transform hover:-translate-y-1
+}
+
+
+
+
+.circular-chart {
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
+    max-height: 250px
+    }
+.circle-bg {
+    fill: none;
+    stroke: #E5E7EB;
+    stroke-width: 3.8
+    }
+.circle {
+    fill: none;
+    stroke-width: 3.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards
+    }
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+        }
+    }
+.percentage {
+    font-weight: 700;
+    font-size: 0.5em;
+    text-anchor: middle
+    }
