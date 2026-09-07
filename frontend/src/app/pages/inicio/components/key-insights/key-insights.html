@@ -1,0 +1,62 @@
+<section class="mb-11 bg-surface-container-low p-8 rounded-2xl shadow-floating select-none">
+  <h2 class="text-3xl font-bold text-primary mb-8">Indicadores clave</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-surface/80 rounded-2xl p-8 shadow-card flex flex-col items-center text-center">
+      <h3 class="text-lg font-bold text-primary w-full mb-6">Pacientes cubiertos</h3>
+      <div class="w-48 h-48 relative mb-4">
+        @if(isBrowser){
+          <canvas
+            baseChart
+            [data]="doughnutData"
+            [options]="chartOptions()"
+            [type]="doughnutChartType">
+          </canvas>
+        }
+      </div>
+      <h4 class="font-bold text-text mb-1">Total de pacientes</h4>
+      <p class="text-sm text-on-background/70">Basados en los registros recientes de la plataforma.</p>
+    </div>
+
+    <div class="bg-surface/80 rounded-2xl p-8 shadow-card flex flex-col relative overflow-hidden">
+      <div class="flex justify-between items-start mb-4">
+        <h3 class="text-lg font-bold text-primary">Enfermedades monitoreadas</h3>
+        <span class="material-symbols-outlined text-secondary text-4xl! font-extrabold! opacity-80">coronavirus</span>
+      </div>
+      <p class="text-sm font-semibold text-on-background mb-6">Enfermedades en observación en las últimas semanas</p>
+      <div class="flex flex-wrap gap-2 mb-8">
+        @for(enfermedad of enfermedades; track enfermedad){
+          <span
+                class="text-xs font-semibold px-3 py-1 rounded-full"
+                [class]="($index % 2 === 0) ? 'bg-secondary text-on-secondary' : 'bg-primary text-on-primary'">
+                {{enfermedad}}
+          </span>
+        }
+      </div>
+      <p class="text-on-background/70 text-xs mb-2.5">Información recolectada de Datos Abiertos de Colombia</p>
+      <button class="text-sm font-bold text-primary hover:text-secondary transition-colors mt-auto flex items-center group cursor-pointer" routerLink="/tendencias">
+          Ver más <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform text-base">arrow_forward</span>
+      </button>
+    </div>
+
+    <div class="bg-surface/80 rounded-card p-8 shadow-card flex flex-col">
+      <div class="flex justify-between items-start mb-4">
+        <h3 class="text-lg font-bold text-primary">Próximos eventos</h3>
+        <span class="material-symbols-outlined text-secondary text-4xl! font-extrabold! opacity-80">calendar_clock</span>
+      </div>
+    <div class="space-y-5 grow">
+      @for(event of featuredEvents; track event.id){
+        <div class="flex items-start gap-4">
+          <div class="bg-blue-50 rounded text-center min-w-[3rem] overflow-hidden border border-blue-100">
+          <div class="bg-primary text-white text-[10px] font-bold py-0.5 uppercase tracking-wider flex items-center justify-center"><span class="material-symbols-outlined text-[11px]! mr-1">calendar_add_on</span>{{event.date | date: 'MMM'}}</div>
+          <div class="text-lg font-bold text-primary py-1">{{event.date | date: 'd'}}</div>
+        </div>
+          <h4 class="font-semibold text-sm mb-0.5">{{event.description}}</h4>
+        </div>
+      }
+    </div>
+      <a class="text-sm font-bold text-primary hover:text-secondary transition-colors mt-6 flex items-center group" href="https://hospitalregionalchiquinquira.gov.co/atencion-ciudadano/calendario/" target="_blank">
+        Ver calendario completo <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform text-base">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>

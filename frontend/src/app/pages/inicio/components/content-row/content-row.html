@@ -1,0 +1,47 @@
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
+  <div class="lg:col-span-2 rounded-2xl bg-surface p-6 shadow-floating">
+    <h2 class="text-2xl font-bold text-primary mb-8">Últimas noticias</h2>
+    <div class="space-y-8">
+      @for(new of featuredNews(); track new.id){
+        <article class="flex flex-col md:flex-row gap-6 group cursor-pointer">
+          <div class="w-full md:w-2/5 shrink-0 relative">
+            <img class="w-full h-full object-cover rounded-2xl shadow-sm group-hover:shadow-md transition-shadow" [ngSrc]="new.urlImg" fill/>
+          </div>
+          <div class="flex flex-col justify-center">
+            <span class="text-xs font-bold text-text-muted uppercase tracking-wider mb-2">{{ new.fecha | date: 'E, d MMMM, y'}}</span>
+            <h3 class="text-lg font-bold text-primary mb-3 group-hover:text-secondary transition-colors leading-snug">{{new.titulo}}</h3>
+            <p class="text-[17px] leading-relaxed mb-4">{{new.descripcion}}</p>
+            <a class="text-xs font-bold text-primary group-hover:text-secondary flex items-center" routerLink="/noticias">Leer más <span class="material-symbols-outlined ml-1 text-sm!">arrow_forward</span></a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+
+  <section class="min-w-1/2 -ml-8 h-full shadow-floating rounded-2xl">
+    <div class="lg:col-span-5">
+      <div class="bg-surface/70 rounded-3xl p-5 h-full">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="font-bold text-lg text-primary">Registro de alertas</h2>
+          <a class="text-xs font-bold text-primary group-hover:text-secondary flex items-center" routerLink="/alertas">Ver todas <span class="material-symbols-outlined ml-1 text-sm!">arrow_forward</span></a>
+        </div>
+        <div class="space-y-4">
+          @for(alert of featuredAlerts(); track alert.id){
+            <div class="bg-surface rounded-2xl p-5 border-l-5 shadow-sm relative overflow-hidden" [ngClass]="alertBorder[alert.tipo]">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-2.5 h-2.5 rounded-full" [ngClass]="alertIndicator[alert.tipo]"></div>
+                  <span class="font-label text-[11px] font-bold uppercase tracking-wider" [ngClass]="alertColor[alert.tipo]">{{alert.tipo}}</span>
+                </div>
+                <span class="text-on-surface-variant text-[10px] font-body">{{alert.fecha}}</span>
+              </div>
+              <h4 class="font-headline font-bold text-on-surface mb-1 text-[16px]">{{alert.titulo}}</h4>
+              <p class="text-on-surface-variant font-body text-xs">{{alert.descripcion}}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</div>

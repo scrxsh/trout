@@ -1,0 +1,29 @@
+@reference "../../../../../styles.css";
+
+.circular-chart {
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
+    max-height: 250px
+    }
+.circle-bg {
+    fill: none;
+    stroke: #E5E7EB;
+    stroke-width: 3.8
+    }
+.circle {
+    fill: none;
+    stroke-width: 3.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards
+    }
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+        }
+    }
+.percentage {
+    font-weight: 700;
+    font-size: 0.5em;
+    text-anchor: middle
+}
