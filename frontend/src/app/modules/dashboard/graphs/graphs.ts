@@ -3,7 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { ChartConfiguration, ChartData, ChartType, Chart, registerables } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 //import { driver } from 'driver.js';
-import { Heatmap } from './heatmap/heatmap';
+
 
 
 import { ThemeService } from '../../../core/theme/services/theme.service';
@@ -11,7 +11,7 @@ Chart.register(...registerables);
 
 @Component({
   selector: 'app-graphs',
-  imports: [BaseChartDirective, Heatmap],
+  imports: [BaseChartDirective],
   templateUrl: './graphs.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './graphs.css',

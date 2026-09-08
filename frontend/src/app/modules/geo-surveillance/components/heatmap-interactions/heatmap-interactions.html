@@ -1,0 +1,58 @@
+<section class="h-full p-6 sm:p-8 flex flex-col gap-5 border-b lg:border-b-0 lg:border-r border-outline/30 bg-surface/85">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <div class="relative flex-1 max-w-md">
+      <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-background text-lg!">search</span>
+      <input class="w-full pl-9 pr-4 py-2 bg-surface border border-outline/40 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary shadow-sm placeholder:text-on-background/60" placeholder="Buscar barrio o cuadrante..." type="text"/>
+    </div>
+    <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+      <button class="filter-cap-map">
+        <span class="material-symbols-outlined text-sm!">warning</span>
+        <span>Puntos críticos</span>
+      </button>
+      <button class="filter-cap-map">
+        <span class="material-symbols-outlined text-sm!">local_hospital</span>
+        <span>Sedes hospitalarias</span>
+      </button>
+      <button class="filter-cap-map">
+        <span class="material-symbols-outlined text-sm!">diversity_1</span>
+        <span>Densidad</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="relative flex-1 rounded-2xl overflow-hidden shadow-inner group min-h-[420px] max-[88%]">
+    <div class="w-full h-full object-cover opacity-90" id="mapa">
+      <app-heatmap></app-heatmap>
+    </div>
+
+    <div class="absolute top-4 left-4 flex flex-wrap gap-2 z-10 pointer-events-none">
+      <span class="micro-metrics">
+      <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+        Puntos activos: <strong class="font-bold text-primary">116</strong>
+      </span>
+      <span class="micro-metrics">
+      <span class="material-symbols-outlined text-xs text-amber-500">location_city</span>
+        Zona más contagiosa: <strong class="font-bold text-primary">Centro</strong>
+      </span>
+      <span class="micro-metrics">
+      <span class="material-symbols-outlined text-xs text-emerald-500">wifi_tethering</span>
+        Cobertura: <strong class="font-bold text-primary">70.77%</strong>
+      </span>
+    </div>
+
+    <div class="absolute bottom-10 left-4 right-4 sm:left-auto sm:right-4 bg-surface/95 backdrop-blur-md p-3 rounded-2xl border border-outline/30 shadow-lg z-10 max-w-sm sm:max-w-md pointer-events-none">
+      <div class="flex items-center justify-between text-[11px] font-semibold text-tertiary mb-1.5">
+        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-tertiary">layers</span> Densidad Epid.</span>
+        <span class="text-secondary font-bold">Pico crítico: Barrio central</span>
+      </div>
+      <div class="h-2.5 rounded-full w-full shadow-inner heat-bar"></div>
+      <div class="flex items-center justify-between gap-3 text-[10px] text-tertiary mt-2 font-semibold">
+        <span class="whitespace-nowrap"><span class="font-bold text-blue-500">Bajo</span> (0 - 15)</span>
+        <span class="whitespace-nowrap"><span class="font-bold text-emerald-500">Moderado</span> (16 - 45)</span>
+        <span class="whitespace-nowrap"><span class="font-bold text-orange-500">Alto</span> (46 - 70)</span>
+        <span class="whitespace-nowrap"><span class="font-bold text-red-500">Gran riesgo</span> (> 70)</span>
+      </div>
+    </div>
+
+  </div>
+</section>

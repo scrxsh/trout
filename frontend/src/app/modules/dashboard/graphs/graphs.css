@@ -8,7 +8,7 @@
 
 }
 .chart-wrapper {
-  width: 100%;
+  @apply w-full h-80
 }
 
 .chart-title {

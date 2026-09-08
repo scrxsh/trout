@@ -1,0 +1,13 @@
+@reference "../../../../../styles.css";
+
+.filter-cap-map {
+  @apply px-3 py-1.5 rounded-2xl text-xs font-semibold bg-primary border border-primary/55 text-on-primary hover:bg-primary-container hover:text-on-background shadow-sm flex items-center gap-1 shrink-0
+}
+
+.micro-metrics {
+  @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-on-tertiary backdrop-blur-md text-tertiary text-xs font-semibold border border-on-background/10 shadow-lg
+}
+
+.heat-bar {
+  background: linear-gradient(to right, #1d4ed8, #22d3ee, #a3e635, #facc15, #f97316, #c41212 ,#b91c1c);
+}

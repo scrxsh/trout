@@ -1,0 +1,40 @@
+<main class="w-full mx-auto bg-surface rounded-2xl shadow-floating overflow-hidden flex flex-col">
+
+  <header class="px-6 sm:px-8 py-6 border-b border-outline/20 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+    <div class="space-y-1.5">
+      <h1 class="text-2xl sm:text-3xl font-bold text-on-background tracking-tight flex items-center gap-2.5">Vigilancia Geográfico y Epidemiológica</h1>
+      <p class="text-sm sm:text-[15px] text-outline max-w-2xl font-normal">
+        Monitoreo en tiempo real de concentración de vectores, brotes virales y distribución de alertas sanitarias en los sectores de la ciudad.
+      </p>
+    </div>
+    <div class="flex flex-wrap items-center gap-2.5">
+      <div class="relative">
+        <select class="filters-map">
+          <option selected="">Todas las enfermedades</option>
+          <option>Gripa</option>
+          <option>Dengue</option>
+          <option>Tos Ferina</option>
+        </select>
+      </div>
+      <div class="relative">
+        <select class="filters-map">
+          <option>Últimas 24h</option>
+          <option selected="">Últimos 7 días</option>
+          <option>Mes actual</option>
+        </select>
+      </div>
+      <button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-surface hover:bg-primary/10 text-xs sm:text-sm font-semibold shadow-sm border border-outline/40">
+        <span class="material-symbols-outlined text-base! text-emerald-500 ">sync</span>
+      </button>
+      <button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-primary hover:bg-primary/80 text-on-primary text-xs sm:text-sm font-semibold shadow-md shadow-primary/20 hover:shadow-lg">
+        <span class="material-symbols-outlined text-base!">file_download</span>
+        <span>Exportar</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[660px]">
+      <app-heatmap-interactions class="lg:col-span-7 xl:col-span-8 block h-full" />
+      <app-aside-heatmap class="lg:col-span-5 xl:col-span-4 p-6 sm:p-7 flex flex-col justify-between gap-6 bg-surface overflow-y-auto"></app-aside-heatmap>
+  </div>
+</main>

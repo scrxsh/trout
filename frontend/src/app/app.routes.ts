@@ -12,6 +12,7 @@ import { Social } from './modules/social/social';
 import { Dashboard } from './modules/dashboard/dashboard';
 import { Inicio } from './pages/inicio/inicio';
 import { Trends } from './modules/trends/trends';
+import { GeoSurveillance } from './modules/geo-surveillance/geo-surveillance';
 
 
 
@@ -43,6 +44,10 @@ export const routes: Routes = [
             {
                 path: 'dashboard',
                 component: Dashboard
+            },
+            {
+                path: 'geo',
+                component: GeoSurveillance
             },
             {
                 path: 'alertas',

@@ -23,7 +23,6 @@ export class Heatmap {
 
   constructor() {
     afterNextRender(() => {
-      //Evitar que leaflet se ejecute en Node.js
       if (isPlatformBrowser(this.platformId)) {
         this.iniciarMapa();
       }
@@ -78,10 +77,17 @@ export class Heatmap {
 
     //Creamos el mapa
     this.mapa = L.map(this.mapContainer.nativeElement, {
-      maxZoom: 15,
-      minZoom: 15,
+      Zoom: 16,
       zoomControl: false,
-    }).setView([5.6186, -73.8164], 15);
+        zoomDelta: 0.5,
+  zoomSnap: 0.5,
+  zoomAnimation: true,
+    wheelPxPerZoomLevel: 140
+    }).setView([5.6186, -73.8164], 16);
+
+    L.control.zoom({
+      position: 'topright'
+    }).addTo(this.mapa);
 
     //Proveedor de mapa, dar atribuciones necesaria de acuerdo con DMCA de OSM
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {

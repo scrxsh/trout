@@ -46,7 +46,7 @@ public class GeoController {
         double latChq = 5.617;
         double lonChq = -73.817;
 
-        for (int i = 0; i < 250; i++) {
+        for (int i = 0; i < 500; i++) {
             double lat = latChq + (random.nextDouble() - 0.5) * 0.026;
             double lon = lonChq + (random.nextDouble() - 0.5) * 0.026;
             double intensidad = 0.4 + (random.nextDouble() * 0.9);
