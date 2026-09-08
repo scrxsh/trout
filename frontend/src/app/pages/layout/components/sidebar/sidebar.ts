@@ -22,10 +22,10 @@ export class Sidebar {
     { label: 'Inicio', route: '/inicio', icon: 'home' },
     { label: 'Dashboard', route: '/dashboard', icon: 'dashboard' },
     { label: 'Vigilancia', route: '/geo', icon: 'map'},
+    { label: 'Tendencias', route: '/tendencias', icon: 'trending_up' },
     { label: 'Alertas', route: '/alertas', icon: 'emergency_home'},
     { label: 'Feed', route: '/noticias', icon: 'newsmode' },
     { label: 'Social', route: '/social', icon: 'groups' },
-    { label: 'Tendencias', route: '/tendencias', icon: 'trending_up' },
   ];
 
   private readonly shared = computed(

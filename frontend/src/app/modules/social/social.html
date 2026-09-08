@@ -1,1 +1,392 @@
-<p>social works!</p>
+<div class="w-full mx-auto px-4 sm:px-6 py-6">
+    <!-- Contenedor Principal de 3 Columnas tipo X -->
+    <div class="grid grid-cols-12 gap-6 items-start">
+
+
+      <!-- COLUMNA CENTRAL: Feed principal tipo X -->
+      <main class="col-span-12 space-y-4 lg:col-span-8">
+
+        <!-- Barra superior de Tabs / Feed switch -->
+        <div class="bg-surface rounded-2xl p-2 border border-outline-variant/40 shadow-sm flex items-center justify-around text-sm font-semibold">
+          <button class="flex-1 py-2.5 text-center text-primary border-b-2 border-primary font-bold">Para ti</button>
+          <button class="flex-1 py-2.5 text-center text-outline hover:text-on-surface transition-colors">Siguiendo</button>
+          <button class="flex-1 py-2.5 text-center text-outline hover:text-secondary flex items-center justify-center space-x-1 transition-colors">
+            <span class="w-2 h-2 rounded-full bg-secondary inline-block"></span>
+            <span class="">Alertas Locales</span>
+          </button>
+        </div>
+
+        <!-- Caja de composición de nuevo post estilo X -->
+        <div class="bg-surface rounded-2xl p-4 border border-outline-variant/40 shadow-sm">
+          <div class="flex space-x-3">
+            <div class="w-11 h-11 rounded-full bg-primary-container text-on-primary-container font-bold flex items-center justify-center text-sm shrink-0">
+              DR
+            </div>
+            <div class="flex-1">
+              <textarea rows="3" class="w-full bg-transparent resize-none border-0 focus:ring-0 p-0 text-on-surface placeholder:text-outline text-sm focus:outline-none" placeholder="¿Qué situación sanitaria o reporte comunitario deseas compartir hoy?"></textarea>
+
+              <!-- Chips rápidos de clasificación -->
+              <div class="flex flex-wrap gap-1.5 my-2">
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary-container text-on-primary-container cursor-pointer hover:opacity-90">#VigilanciaComunitaria</span>
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-surface-container-high text-on-surface cursor-pointer hover:bg-surface-container">#Boyacá</span>
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-secondary-container/20 text-secondary border border-secondary/30 cursor-pointer">+ Etiquetar Alerta</span>
+              </div>
+
+              <div class="pt-3 border-t border-outline-variant/30 flex items-center justify-between">
+                <div class="flex items-center space-x-1 text-primary">
+                  <button class="p-2 rounded-lg hover:bg-surface-container-low transition-colors" title="Añadir Imagen">
+                    <span class="material-symbols-outlined text-xl">image</span>
+                  </button>
+                  <button class="p-2 rounded-lg hover:bg-surface-container-low transition-colors" title="Ubicación / Cuadrante">
+                    <span class="material-symbols-outlined text-xl">location_on</span>
+                  </button>
+                  <button class="p-2 rounded-lg hover:bg-surface-container-low transition-colors" title="Encuesta">
+                    <span class="material-symbols-outlined text-xl">poll</span>
+                  </button>
+                  <button class="p-2 rounded-lg hover:bg-surface-container-low transition-colors text-secondary" title="Alerta Prioritaria">
+                    <span class="material-symbols-outlined text-xl">emergency</span>
+                  </button>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <span class="text-xs text-outline">180/280</span>
+                  <button class="px-5 py-2 bg-primary hover:bg-tertiary text-on-primary rounded-xl font-bold text-xs shadow transition-all">
+                    Publicar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- POST 1: Reporte Crítico / Alerta Epidemiológica -->
+        <article class="bg-surface rounded-2xl p-5 border-l-4 border-l-secondary border border-outline-variant/40 shadow-sm transition-all hover:border-outline-variant">
+          <div class="flex items-start space-x-3">
+            <div class="w-11 h-11 rounded-full bg-secondary-container text-on-secondary-container font-bold flex items-center justify-center text-sm shrink-0">
+              <span class="material-symbols-outlined text-lg">medical_services</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <!-- Cabecera del usuario -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-1.5 flex-wrap">
+                  <span class="font-bold text-sm text-on-surface">Epidemiología Chiquinquirá</span>
+                  <span class="material-symbols-outlined text-sm text-primary filled">verified</span>
+                  <span class="text-xs text-outline">@salud_chiquinquira</span>
+                  <span class="text-xs text-outline">· 15 min</span>
+                </div>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary text-on-secondary uppercase tracking-wider">
+                  Alerta Crítica
+                </span>
+              </div>
+
+              <!-- Contenido del Post -->
+              <p class="text-sm text-on-surface mt-2 leading-relaxed">
+                <span class="font-semibold text-secondary">[ACTUALIZACIÓN ZONA A]</span> Se registra un repunte de cuadros de Infección Respiratoria Aguda (IRA) en el sector Centro y Nororiental. Recordamos a la ciudadanía extremar medidas de ventilación y acudir al Centro de Salud La Pola si se presentan signos de alarma.
+              </p>
+
+              <!-- Tarjeta de datos adjunta dentro del post -->
+              <div class="mt-3 bg-surface-container-low rounded-xl p-3 border border-outline-variant/30 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-9 h-9 rounded-lg bg-primary text-on-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-base">vital_signs</span>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold text-on-surface">Casos reportados: +84 activos</div>
+                    <div class="text-[11px] text-outline">Cuadrante Carrera 9 a 14 · Estado: Atención prioritaria</div>
+                  </div>
+                </div>
+                <button class="text-xs font-bold text-primary hover:underline flex items-center">
+                  Ver Mapa <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+              </div>
+
+              <!-- Barra de Acciones de Interacción tipo X -->
+              <div class="flex items-center justify-between mt-4 pt-3 border-t border-outline-variant/25 text-outline text-xs">
+                <button class="flex items-center space-x-1.5 hover:text-tertiary transition-colors group">
+                  <div class="p-1.5 rounded-full group-hover:bg-primary-container/40">
+                    <span class="material-symbols-outlined text-base">chat_bubble</span>
+                  </div>
+                  <span class="">42</span>
+                </button>
+                <button class="flex items-center space-x-1.5 hover:text-tertiary transition-colors group">
+                  <div class="p-1.5 rounded-full group-hover:bg-primary-container/40">
+                    <span class="material-symbols-outlined text-base">repeat</span>
+                  </div>
+                  <span class="">128</span>
+                </button>
+                <button class="flex items-center space-x-1.5 hover:text-secondary transition-colors group text-secondary">
+                  <div class="p-1.5 rounded-full group-hover:bg-secondary-container/20">
+                    <span class="material-symbols-outlined text-base filled">favorite</span>
+                  </div>
+                  <span class="font-bold">356</span>
+                </button>
+                <button class="flex items-center space-x-1.5 hover:text-tertiary transition-colors group">
+                  <div class="p-1.5 rounded-full group-hover:bg-primary-container/40">
+                    <span class="material-symbols-outlined text-base">visibility</span>
+                  </div>
+                  <span class="">3.4k</span>
+                </button>
+                <div class="flex items-center space-x-2">
+                  <button class="p-1.5 rounded-full hover:bg-surface-container-low hover:text-on-surface transition-colors">
+                    <span class="material-symbols-outlined text-base">bookmark</span>
+                  </button>
+                  <button class="p-1.5 rounded-full hover:bg-surface-container-low hover:text-on-surface transition-colors">
+                    <span class="material-symbols-outlined text-base">share</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 2: Post Ciudadano / Consejo Comunitario -->
+        <article class="bg-surface rounded-2xl p-5 border border-outline-variant/40 shadow-sm transition-all hover:border-outline-variant">
+          <div class="flex items-start space-x-3">
+            <div class="w-11 h-11 rounded-full bg-primary text-on-primary font-bold flex items-center justify-center text-sm shrink-0">
+              CL
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-1.5 flex-wrap">
+                  <span class="font-bold text-sm text-on-surface">Dra. Camila Lozano</span>
+                  <span class="material-symbols-outlined text-sm text-tertiary filled">verified</span>
+                  <span class="text-xs text-outline">@camila_pediatria</span>
+                  <span class="text-xs text-outline">· 1 h</span>
+                </div>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary-container text-on-primary-container">
+                  Prevención
+                </span>
+              </div>
+
+              <p class="text-sm text-on-surface mt-2 leading-relaxed">
+                A propósito de la temporada de lluvias en Chiquinquirá: revisen recipientes abiertos en patios y jardines para evitar proliferación de mosquitos transmisores. La prevención comunitaria salva vidas familiares. 💧🦟
+              </p>
+
+              <!-- Encuesta interactiva comunitaria -->
+              <div class="mt-3 bg-surface-container-low rounded-xl p-3 border border-outline-variant/30 space-y-2">
+                <div class="text-xs font-semibold text-on-surface">¿Hiciste inspección de aguas estancadas esta semana?</div>
+                <div class="relative bg-surface rounded-lg p-2.5 flex justify-between items-center text-xs border border-outline-variant/40">
+                  <div class="absolute left-0 top-0 bottom-0 bg-primary-container/60 rounded-lg" style="width: 72%;"></div>
+                  <span class="relative font-bold text-primary">Sí, en casa y vecindario</span>
+                  <span class="relative font-extrabold text-on-surface">72%</span>
+                </div>
+                <div class="relative bg-surface rounded-lg p-2.5 flex justify-between items-center text-xs border border-outline-variant/40">
+                  <div class="absolute left-0 top-0 bottom-0 bg-surface-container-high" style="width: 28%;"></div>
+                  <span class="relative text-on-surface">Aún no</span>
+                  <span class="relative font-bold text-outline">28%</span>
+                </div>
+                <div class="text-[11px] text-outline pt-1">540 votos comunitarios · Quedan 8 horas</div>
+              </div>
+
+              <div class="flex items-center justify-between mt-4 pt-3 border-t border-outline-variant/25 text-outline text-xs">
+                <button class="flex items-center space-x-1.5 hover:text-tertiary transition-colors group">
+                  <div class="p-1.5 rounded-full group-hover:bg-primary-container/40">
+                    <span class="material-symbols-outlined text-base">chat_bubble</span>
+                  </div>
+                  <span class="">19</span>
+                </button>
+                <button class="flex items-center space-x-1.5 hover:text-tertiary transition-colors group">
+                  <div class="p-1.5 rounded-full group-hover:bg-primary-container/40">
+                    <span class="material-symbols-outlined text-base">repeat</span>
+                  </div>
+                  <span class="">45</span>
+                </button>
+                <button class="flex items-center space-x-1.5 hover:text-secondary transition-colors group">
+                  <div class="p-1.5 rounded-full group-hover:bg-secondary-container/20">
+                    <span class="material-symbols-outlined text-base">favorite</span>
+                  </div>
+                  <span class="">189</span>
+                </button>
+                <button class="flex items-center space-x-1.5 hover:text-tertiary transition-colors group">
+                  <div class="p-1.5 rounded-full group-hover:bg-primary-container/40">
+                    <span class="material-symbols-outlined text-base">visibility</span>
+                  </div>
+                  <span class="">1.8k</span>
+                </button>
+                <div class="flex items-center space-x-2">
+                  <button class="p-1.5 rounded-full hover:bg-surface-container-low hover:text-on-surface transition-colors">
+                    <span class="material-symbols-outlined text-base">bookmark</span>
+                  </button>
+                  <button class="p-1.5 rounded-full hover:bg-surface-container-low hover:text-on-surface transition-colors">
+                    <span class="material-symbols-outlined text-base">share</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 3: Anuncio de Jornada de Vacunación -->
+        <article class="bg-surface rounded-2xl p-5 border border-outline-variant/40 shadow-sm transition-all hover:border-outline-variant">
+          <div class="flex items-start space-x-3">
+            <div class="w-11 h-11 rounded-full bg-tertiary text-on-tertiary font-bold flex items-center justify-center text-sm shrink-0">
+              <span class="material-symbols-outlined text-lg">vaccines</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-1.5 flex-wrap">
+                  <span class="font-bold text-sm text-on-surface">Hospital Regional Chiquinquirá</span>
+                  <span class="material-symbols-outlined text-sm text-primary filled">verified</span>
+                  <span class="text-xs text-outline">@hosp_chiquinquira</span>
+                  <span class="text-xs text-outline">· 3 h</span>
+                </div>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary text-on-primary">
+                  Jornada Abierta
+                </span>
+              </div>
+
+              <p class="text-sm text-on-surface mt-2 leading-relaxed">
+                Mañana viernes se realizará jornada masiva y gratuita de vacunación infantil y refuerzo para adultos mayores en el Parque Julio Flórez (8:00 AM - 4:00 PM). ¡Cuidémonos en equipo!
+              </p>
+
+              <!-- Banner estético con colores del sistema -->
+              <div class="mt-3 rounded-xl p-4 bg-linear-to-r from-primary via-tertiary to-primary-container text-on-primary flex items-center justify-between">
+                <div>
+                  <div class="text-xs uppercase font-extrabold tracking-wider text-primary-container">Atención Prioritaria</div>
+                  <div class="text-base font-bold">Jornada de Inmunización Territorial</div>
+                  <div class="text-xs text-on-primary/80 mt-0.5">Vacunas influenza, tétano y cuadro básico completo</div>
+                </div>
+                <div class="w-12 h-12 rounded-full bg-surface/20 flex items-center justify-center text-white shrink-0">
+                  <span class="material-symbols-outlined text-2xl">event_available</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between mt-4 pt-3 border-t border-outline-variant/25 text-outline text-xs">
+                <button class="flex items-center space-x-1.5 hover:text-tertiary transition-colors group">
+                  <div class="p-1.5 rounded-full group-hover:bg-primary-container/40">
+                    <span class="material-symbols-outlined text-base">chat_bubble</span>
+                  </div>
+                  <span class="">31</span>
+                </button>
+                <button class="flex items-center space-x-1.5 hover:text-tertiary transition-colors group">
+                  <div class="p-1.5 rounded-full group-hover:bg-primary-container/40">
+                    <span class="material-symbols-outlined text-base">repeat</span>
+                  </div>
+                  <span class="">94</span>
+                </button>
+                <button class="flex items-center space-x-1.5 hover:text-secondary transition-colors group">
+                  <div class="p-1.5 rounded-full group-hover:bg-secondary-container/20">
+                    <span class="material-symbols-outlined text-base">favorite</span>
+                  </div>
+                  <span class="">412</span>
+                </button>
+                <button class="flex items-center space-x-1.5 hover:text-tertiary transition-colors group">
+                  <div class="p-1.5 rounded-full group-hover:bg-primary-container/40">
+                    <span class="material-symbols-outlined text-base">visibility</span>
+                  </div>
+                  <span class="">4.1k</span>
+                </button>
+                <div class="flex items-center space-x-2">
+                  <button class="p-1.5 rounded-full hover:bg-surface-container-low hover:text-on-surface transition-colors">
+                    <span class="material-symbols-outlined text-base">bookmark</span>
+                  </button>
+                  <button class="p-1.5 rounded-full hover:bg-surface-container-low hover:text-on-surface transition-colors">
+                    <span class="material-symbols-outlined text-base">share</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </main>
+
+      <!-- COLUMNA DERECHA: Tendencias, Búsqueda y Monitoreo -->
+      <aside class="col-span-12 space-y-4 sticky top-6 lg:col-span-4">
+
+        <!-- Barra de búsqueda tipo X -->
+        <div class="bg-surface rounded-2xl p-3 border border-outline-variant/40 shadow-sm flex items-center space-x-3">
+          <span class="material-symbols-outlined text-outline">search</span>
+          <input type="text" placeholder="Buscar reportes o temas..." class="bg-transparent rounded-2xl text-xs w-full border-none focus:ring-2 focus:ring-primary-container focus:bg-on-primary-container/10 transition-all duration-200 placeholder:text-outline text-on-surface outline-none">
+        </div>
+
+        <!-- Tendencias Sanitarias Locales -->
+        <div class="bg-surface rounded-2xl p-4 border border-outline-variant/40 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-bold text-sm text-primary">Tendencias Sanitarias</h3>
+            <span class="material-symbols-outlined text-outline text-sm cursor-pointer">settings</span>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <div class="group cursor-pointer hover:bg-surface-container-low p-2 rounded-xl transition-all">
+              <div class="text-[11px] text-outline flex justify-between">
+                <span class="">Vigilancia Epidemiológica</span>
+                <span class="text-secondary font-bold">Crítico</span>
+              </div>
+              <div class="font-bold text-on-surface group-hover:text-primary mt-0.5">#PicoRespiratorioIRA</div>
+              <div class="text-[11px] text-outline mt-0.5">1,248 reportes en Boyacá</div>
+            </div>
+
+            <div class="group cursor-pointer hover:bg-surface-container-low p-2 rounded-xl transition-all">
+              <div class="text-[11px] text-outline flex justify-between">
+                <span class="">Centro de Salud La Pola</span>
+                <span class="text-tertiary font-medium">88% Capacidad</span>
+              </div>
+              <div class="font-bold text-on-surface group-hover:text-primary mt-0.5">#UrgenciasChiquinquira</div>
+              <div class="text-[11px] text-outline mt-0.5">856 interacciones hoy</div>
+            </div>
+
+            <div class="group cursor-pointer hover:bg-surface-container-low p-2 rounded-xl transition-all">
+              <div class="text-[11px] text-outline">Campaña de Prevención</div>
+              <div class="font-bold text-on-surface group-hover:text-primary mt-0.5">#ControlVectoresDengue</div>
+              <div class="text-[11px] text-outline mt-0.5">410 publicaciones</div>
+            </div>
+
+            <div class="group cursor-pointer hover:bg-surface-container-low p-2 rounded-xl transition-all">
+              <div class="text-[11px] text-outline">Jornada Comunitaria</div>
+              <div class="font-bold text-on-surface group-hover:text-primary mt-0.5">#ParqueJulioFlorez</div>
+              <div class="text-[11px] text-outline mt-0.5">320 menciones</div>
+            </div>
+          </div>
+
+          <button class="w-full mt-3 py-2 text-center text-xs font-bold text-primary hover:bg-primary-container/30 rounded-xl transition-all">
+            Mostrar más tendencias
+          </button>
+        </div>
+
+        <!-- A quién seguir / Autoridades Verificadas -->
+        <div class="bg-surface rounded-2xl p-4 border border-outline-variant/40 shadow-sm">
+          <h3 class="font-bold text-sm text-primary mb-3">Fuentes Sanitarias Verificadas</h3>
+
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2 overflow-hidden">
+                <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container font-bold text-xs flex items-center justify-center shrink-0">
+                  SV
+                </div>
+                <div class="truncate">
+                  <div class="font-bold text-xs text-on-surface truncate flex items-center gap-1">
+                    SIVIGILA Boyacá
+                    <span class="material-symbols-outlined text-[12px] text-primary filled">verified</span>
+                  </div>
+                  <div class="text-[10px] text-outline truncate">@sivigila_boyaca</div>
+                </div>
+              </div>
+              <button class="px-3 py-1 bg-primary text-on-primary rounded-full text-xs font-semibold hover:bg-tertiary transition-all">
+                Seguir
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2 overflow-hidden">
+                <div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container font-bold text-xs flex items-center justify-center shrink-0">
+                  CR
+                </div>
+                <div class="truncate">
+                  <div class="font-bold text-xs text-on-surface truncate flex items-center gap-1">
+                    Cruz Roja Boyacá
+                    <span class="material-symbols-outlined text-[12px] text-secondary filled">verified</span>
+                  </div>
+                  <div class="text-[10px] text-outline truncate">@cruzrojaboyaca</div>
+                </div>
+              </div>
+              <button class="px-3 py-1 border border-outline-variant text-on-surface hover:bg-surface-container-low rounded-full text-xs font-semibold transition-all">
+                Siguiendo
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>

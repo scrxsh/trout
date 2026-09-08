@@ -1,1 +1,492 @@
-<p>trends works!</p>
+  <div class="w-full mx-auto space-y-6">
+
+    <!-- Header / Banner de Control del Modelo Neuronal -->
+    <header class="bg-white rounded-2xl p-6 sm:p-8 border border-[#c3c6d1]/40 shadow-soft">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[#d7e2ff] text-[#284677]">
+            <span class="w-2 h-2 rounded-full bg-[#1a4480] pulse-dot"></span>
+            <span>Arquitectura LSTM Bi-Direccional + Transformer v4.2</span>
+            <span class="text-[#1a4480]/40">•</span>
+            <span>Chiquinquirá & Boyacá</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#161616]">
+            Proyección y Tendencias Epidemiológicas Inteligentes
+          </h1>
+          <p class="text-sm text-[#757575] leading-relaxed">
+            Inferencia predictiva impulsada por redes neuronales recurrentes entrenadas con historiales clínicos, densidad pluviométrica, concentración de vectores y reportes comunitarios en tiempo real.
+          </p>
+        </div>
+
+        <!-- Badges & Action Buttons -->
+        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3">
+          <div class="bg-[#f6f3f2] rounded-xl px-4 py-3 border border-[#c3c6d1]/40 text-left">
+            <span class="block text-[11px] font-bold uppercase tracking-wider text-[#757575]">Precisión F1-Score</span>
+            <span class="text-xl font-black text-[#1a4480]">94.8%</span>
+          </div>
+          <div class="bg-[#f6f3f2] rounded-xl px-4 py-3 border border-[#c3c6d1]/40 text-left">
+            <span class="block text-[11px] font-bold uppercase tracking-wider text-[#757575]">Ventana Predictiva</span>
+            <span class="text-xl font-black text-[#0b5694]">30 Días</span>
+          </div>
+          <button class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#1a4480] hover:bg-[#0b5694] text-white font-bold text-sm shadow-sm transition-all duration-200 active:scale-95">
+            <span class="material-symbols-outlined text-lg">sync</span>
+            <span>Reentrenar Modelo</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filtros Rápidos de Enfermedad y Parámetros -->
+      <div class="mt-6 pt-6 border-t border-[#c3c6d1]/30 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-xs font-bold text-[#757575] mr-1 uppercase">Patología en análisis:</span>
+          <button class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#1a4480] text-white shadow-sm transition-colors">
+            Infección Respiratoria Aguda (IRA)
+          </button>
+          <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-[#f6f3f2] text-[#161616] hover:bg-[#eae7e7] border border-[#c3c6d1]/50 transition-colors">
+            Dengue & Arbovirosis
+          </button>
+          <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-[#f6f3f2] text-[#161616] hover:bg-[#eae7e7] border border-[#c3c6d1]/50 transition-colors">
+            Gastroenteritis Viral
+          </button>
+          <button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-[#f6f3f2] text-[#161616] hover:bg-[#eae7e7] border border-[#c3c6d1]/50 transition-colors">
+            Neumonía en Adultos Mayores
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3 text-xs text-[#757575]">
+          <span class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#1a4480]"></span> Datos históricos
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#cf3a3a]"></span> Proyección IA (Intervalo 95%)
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#0b5694] border border-[#7eb5f9]"></span> Puntos de quiebre
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Fila de Tarjetas Resumen de Tendencias & Métricas Predictivas -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <!-- Métrica 1 -->
+      <div class="bg-white rounded-2xl p-5 border border-[#c3c6d1]/40 shadow-soft">
+        <div class="flex items-center justify-between text-xs text-[#757575]">
+          <span class="font-bold uppercase tracking-wider">Riesgo de Brote Inminente</span>
+          <span class="material-symbols-outlined text-[#cf3a3a] text-lg">warning</span>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span class="text-3xl font-black text-[#cf3a3a]">+34.8%</span>
+          <span class="text-xs font-semibold text-[#5c0008] bg-[#fa5955]/20 px-2 py-0.5 rounded-full">Alto Riesgo</span>
+        </div>
+        <p class="text-xs text-[#757575] mt-2">
+          Pico estimado en <strong>9 días</strong> para la Comuna Norte y Sector La Pola.
+        </p>
+        <div class="mt-3 h-1.5 w-full bg-[#f0eded] rounded-full overflow-hidden">
+          <div class="h-full bg-[#cf3a3a] rounded-full" style="width: 78%"></div>
+        </div>
+      </div>
+
+      <!-- Métrica 2 -->
+      <div class="bg-white rounded-2xl p-5 border border-[#c3c6d1]/40 shadow-soft">
+        <div class="flex items-center justify-between text-xs text-[#757575]">
+          <span class="font-bold uppercase tracking-wider">Número Básico R0 Proyectado</span>
+          <span class="material-symbols-outlined text-[#1a4480] text-lg">timeline</span>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span class="text-3xl font-black text-[#1a4480]">1.42</span>
+          <span class="text-xs font-semibold text-[#284677] bg-[#d7e2ff] px-2 py-0.5 rounded-full">Expansivo (>1.0)</span>
+        </div>
+        <p class="text-xs text-[#757575] mt-2">
+          Aceleración detectada por combinación de lluvias y temperaturas bajas (11°C).
+        </p>
+        <div class="mt-3 h-1.5 w-full bg-[#f0eded] rounded-full overflow-hidden">
+          <div class="h-full bg-[#1a4480] rounded-full" style="width: 65%"></div>
+        </div>
+      </div>
+
+      <!-- Métrica 3 -->
+      <div class="bg-white rounded-2xl p-5 border border-[#c3c6d1]/40 shadow-soft">
+        <div class="flex items-center justify-between text-xs text-[#757575]">
+          <span class="font-bold uppercase tracking-wider">Ocupación Estimada Camas</span>
+          <span class="material-symbols-outlined text-[#0b5694] text-lg">local_hospital</span>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span class="text-3xl font-black text-[#0b5694]">88.5%</span>
+          <span class="text-xs font-semibold text-[#00467c] bg-[#7eb5f9]/25 px-2 py-0.5 rounded-full">Capacidad Crítica</span>
+        </div>
+        <p class="text-xs text-[#757575] mt-2">
+          Saturación probable en Hospital Regional de Chiquinquirá para el 18 de Abril.
+        </p>
+        <div class="mt-3 h-1.5 w-full bg-[#f0eded] rounded-full overflow-hidden">
+          <div class="h-full bg-[#0b5694] rounded-full" style="width: 88.5%"></div>
+        </div>
+      </div>
+
+      <!-- Métrica 4 -->
+      <div class="bg-white rounded-2xl p-5 border border-[#c3c6d1]/40 shadow-soft">
+        <div class="flex items-center justify-between text-xs text-[#757575]">
+          <span class="font-bold uppercase tracking-wider">Confiabilidad Inferencia</span>
+          <span class="material-symbols-outlined text-[#1a4480] text-lg">neurology</span>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span class="text-3xl font-black text-[#1a4480]">98.2%</span>
+          <span class="text-xs font-semibold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full">Óptima</span>
+        </div>
+        <p class="text-xs text-[#757575] mt-2">
+          Basado en 14,280 muestras territoriales validadas por SIVIGILA Boyacá.
+        </p>
+        <div class="mt-3 h-1.5 w-full bg-[#f0eded] rounded-full overflow-hidden">
+          <div class="h-full bg-[#1a4480] rounded-full" style="width: 98%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloque Principal: Gráfica de Inferencia Neuronal & Visualización de Capas de la Red -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- Columna Izquierda / Central: Gráfico de Tendencias & Curva Predictiva Neuronal (8 cols) -->
+      <section class="lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 border border-[#c3c6d1]/40 shadow-soft space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#c3c6d1]/30">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[#1a4480]">insights</span>
+              <h2 class="text-lg font-bold text-[#161616]">Curva Predictiva de Incidencia Semanal</h2>
+            </div>
+            <p class="text-xs text-[#757575]">Proyección temporal: Histórico vs Inferencia Neuronal (Próximas 4 semanas)</p>
+          </div>
+
+          <!-- Controles de granularidad temporal -->
+          <div class="inline-flex p-1 bg-[#f6f3f2] rounded-xl border border-[#c3c6d1]/40 text-xs font-semibold">
+            <button class="px-3 py-1 rounded-lg bg-white text-[#1a4480] shadow-sm font-bold">Días</button>
+            <button class="px-3 py-1 rounded-lg text-[#757575] hover:text-[#161616]">Semanas</button>
+            <button class="px-3 py-1 rounded-lg text-[#757575] hover:text-[#161616]">Meses</button>
+          </div>
+        </div>
+
+        <!-- SVG Interactivo / Gráfico de Tendencia Neuronal con Área de Incertidumbre -->
+        <div class="w-full overflow-hidden">
+          <div class="relative w-full aspect-16/8 min-h-[280px]">
+            <svg class="w-full h-full" viewBox="0 0 800 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Rejilla horizontal sutil -->
+              <line x1="60" y1="50" x2="780" y2="50" stroke="#f0eded" stroke-dasharray="4 4" stroke-width="1.5"/>
+              <line x1="60" y1="120" x2="780" y2="120" stroke="#f0eded" stroke-dasharray="4 4" stroke-width="1.5"/>
+              <line x1="60" y1="190" x2="780" y2="190" stroke="#f0eded" stroke-dasharray="4 4" stroke-width="1.5"/>
+              <line x1="60" y1="260" x2="780" y2="260" stroke="#f0eded" stroke-dasharray="4 4" stroke-width="1.5"/>
+              <line x1="60" y1="320" x2="780" y2="320" stroke="#c3c6d1" stroke-width="1.5"/>
+
+              <!-- Etiquetas Y -->
+              <text x="45" y="55" fill="#757575" font-size="11" font-weight="600" text-anchor="end">400</text>
+              <text x="45" y="125" fill="#757575" font-size="11" font-weight="600" text-anchor="end">300</text>
+              <text x="45" y="195" fill="#757575" font-size="11" font-weight="600" text-anchor="end">200</text>
+              <text x="45" y="265" fill="#757575" font-size="11" font-weight="600" text-anchor="end">100</text>
+              <text x="45" y="324" fill="#757575" font-size="11" font-weight="600" text-anchor="end">0</text>
+
+              <!-- Línea divisoria Hoy / Futuro -->
+              <line x1="420" y1="30" x2="420" y2="320" stroke="#1a4480" stroke-width="1.5" stroke-dasharray="6 6"/>
+              <rect x="365" y="20" width="110" height="24" rx="6" fill="#d7e2ff"/>
+              <text x="420" y="36" fill="#284677" font-size="10" font-weight="700" text-anchor="middle">HOY (T-0)</text>
+
+              <!-- Área de Proyección con Intervalo de Confianza 95% -->
+              <path d="M420 185 Q490 140 560 110 T700 80 T770 70 L770 160 T700 150 T560 180 Q490 200 420 185 Z" fill="#cf3a3a" fill-opacity="0.12"/>
+
+              <!-- Curva Histórica de Casos Reales (Azul Primario) -->
+              <path d="M60 290 Q120 270 180 280 T300 220 T360 210 T420 185" stroke="#1a4480" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <path d="M60 290 Q120 270 180 280 T300 220 T360 210 T420 185 L420 320 L60 320 Z" fill="url(#gradBlue)" fill-opacity="0.08"/>
+
+              <!-- Curva Proyectada por la Red Neuronal (Rojo Secundario) -->
+              <path d="M420 185 Q490 165 560 140 T650 115 T720 100 T770 95" stroke="#cf3a3a" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="8 5" fill="none"/>
+
+              <!-- Nodos / Puntos de datos históricos -->
+              <circle cx="180" cy="280" r="4.5" fill="#1a4480" stroke="#ffffff" stroke-width="2"/>
+              <circle cx="300" cy="220" r="4.5" fill="#1a4480" stroke="#ffffff" stroke-width="2"/>
+              <circle cx="360" cy="210" r="4.5" fill="#1a4480" stroke="#ffffff" stroke-width="2"/>
+              <circle cx="420" cy="185" r="6" fill="#1a4480" stroke="#ffffff" stroke-width="2.5"/>
+
+              <!-- Puntos de Proyección Predicha -->
+              <circle cx="560" cy="140" r="5" fill="#cf3a3a" stroke="#ffffff" stroke-width="2"/>
+              <circle cx="650" cy="115" r="5" fill="#cf3a3a" stroke="#ffffff" stroke-width="2"/>
+              <circle cx="720" cy="100" r="6" fill="#cf3a3a" stroke="#ffffff" stroke-width="2.5"/>
+
+              <!-- Callout informativo en punto pico estimado -->
+              <g transform="translate(640, 50)">
+                <rect x="0" y="0" width="125" height="42" rx="8" fill="#161616" fill-opacity="0.92"/>
+                <text x="10" y="18" fill="#ffffff" font-size="10" font-weight="700">Pico Estimado: 345 casos</text>
+                <text x="10" y="32" fill="#fa5955" font-size="9" font-weight="600">Alerta Roja: +38% prob.</text>
+              </g>
+
+              <!-- Etiquetas X -->
+              <text x="120" y="342" fill="#757575" font-size="11" font-weight="600" text-anchor="middle">Semana -3</text>
+              <text x="240" y="342" fill="#757575" font-size="11" font-weight="600" text-anchor="middle">Semana -2</text>
+              <text x="360" y="342" fill="#757575" font-size="11" font-weight="600" text-anchor="middle">Semana -1</text>
+              <text x="420" y="342" fill="#1a4480" font-size="11" font-weight="700" text-anchor="middle">Semana 0 (Hoy)</text>
+              <text x="540" y="342" fill="#cf3a3a" font-size="11" font-weight="600" text-anchor="middle">Semana +1</text>
+              <text x="660" y="342" fill="#cf3a3a" font-size="11" font-weight="600" text-anchor="middle">Semana +2 (Pico)</text>
+              <text x="760" y="342" fill="#cf3a3a" font-size="11" font-weight="600" text-anchor="middle">Semana +3</text>
+
+              <defs>
+                <linearGradient id="gradBlue" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a4480"/>
+                  <stop offset="100%" stop-color="#ffffff"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Interpretación y Diagnóstico de la IA -->
+        <div class="p-5 rounded-xl bg-[#f6f3f2] border border-[#c3c6d1]/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-xl bg-[#d7e2ff] text-[#1a4480] flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-xl">auto_awesome</span>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-[#161616]">Diagnóstico de la Red Neuronal: Dispersión Activa</h4>
+              <p class="text-xs text-[#757575] mt-0.5">
+                El modelo detecta una correlación de 0.89 entre la bajada de temperaturas matutinas y la propagación de virus sincitial respiratorio en guarderías y colegios del centro urbano.
+              </p>
+            </div>
+          </div>
+          <button class="whitespace-nowrap px-4 py-2 rounded-lg bg-white border border-[#c3c6d1]/60 text-xs font-bold text-[#1a4480] hover:bg-[#d7e2ff]/30 transition-colors">
+            Ver Factores de Influencia
+          </button>
+        </div>
+      </section>
+
+      <!-- Columna Derecha: Factores de Entrada y Arquitectura de la Red Neuronal (4 cols) -->
+      <aside class="lg:col-span-4 space-y-6">
+
+        <!-- Tarjeta de Pesos y Variables de Entrada (Input Features) -->
+        <div class="bg-white rounded-2xl p-6 border border-[#c3c6d1]/40 shadow-soft space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-[#c3c6d1]/30">
+            <h3 class="text-base font-bold text-[#161616] flex items-center gap-2">
+              <span class="material-symbols-outlined text-[#1a4480]">hub</span>
+              Variables de Entrada (Features)
+            </h3>
+            <span class="text-[11px] font-bold text-[#757575] uppercase">Peso Relativo</span>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Variable 1 -->
+            <div>
+              <div class="flex justify-between text-xs font-medium text-[#161616] mb-1">
+                <span class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[#cf3a3a] text-sm">rainy</span>
+                  Precipitación Pluvial acumulada
+                </span>
+                <span class="font-bold text-[#cf3a3a]">38.2%</span>
+              </div>
+              <div class="h-2 w-full bg-[#f0eded] rounded-full overflow-hidden">
+                <div class="h-full bg-[#cf3a3a] rounded-full" style="width: 38.2%"></div>
+              </div>
+            </div>
+
+            <!-- Variable 2 -->
+            <div>
+              <div class="flex justify-between text-xs font-medium text-[#161616] mb-1">
+                <span class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[#1a4480] text-sm">groups</span>
+                  Reportes Ciudadanos en Red Social
+                </span>
+                <span class="font-bold text-[#1a4480]">27.4%</span>
+              </div>
+              <div class="h-2 w-full bg-[#f0eded] rounded-full overflow-hidden">
+                <div class="h-full bg-[#1a4480] rounded-full" style="width: 27.4%"></div>
+              </div>
+            </div>
+
+            <!-- Variable 3 -->
+            <div>
+              <div class="flex justify-between text-xs font-medium text-[#161616] mb-1">
+                <span class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[#0b5694] text-sm">thermostat</span>
+                  Variación Térmica Diurna (Boyacá)
+                </span>
+                <span class="font-bold text-[#0b5694]">19.1%</span>
+              </div>
+              <div class="h-2 w-full bg-[#f0eded] rounded-full overflow-hidden">
+                <div class="h-full bg-[#0b5694] rounded-full" style="width: 19.1%"></div>
+              </div>
+            </div>
+
+            <!-- Variable 4 -->
+            <div>
+              <div class="flex justify-between text-xs font-medium text-[#161616] mb-1">
+                <span class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[#757575] text-sm">history_edu</span>
+                  Patrón Estacional 2021-2025
+                </span>
+                <span class="font-bold text-[#757575]">15.3%</span>
+              </div>
+              <div class="h-2 w-full bg-[#f0eded] rounded-full overflow-hidden">
+                <div class="h-full bg-[#757575] rounded-full" style="width: 15.3%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta de Estado y Topología de la Red Neuronal -->
+        <div class="bg-white rounded-2xl p-6 border border-[#c3c6d1]/40 shadow-soft space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-[#c3c6d1]/30">
+            <h3 class="text-base font-bold text-[#161616] flex items-center gap-2">
+              <span class="material-symbols-outlined text-[#1a4480]">memory</span>
+              Topología Neuronal
+            </h3>
+            <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Conectado
+            </span>
+          </div>
+
+          <!-- Diagrama esquemático de capas neuronales -->
+          <div class="bg-[#f6f3f2] p-4 rounded-xl space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-[#1a4480]">Capa Entrada:</span>
+              <span class="text-[#757575]">12 Nodos Sensoriales</span>
+            </div>
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-[#0b5694]">Capas Ocultas (LSTM):</span>
+              <span class="text-[#757575]">3 Capas x 128 Unidades (Dropout 0.2)</span>
+            </div>
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-[#cf3a3a]">Mecanismo Atención:</span>
+              <span class="text-[#757575]">Multi-Head Self-Attention (4 cabezas)</span>
+            </div>
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-[#161616]">Capa Salida:</span>
+              <span class="text-[#757575]">Densidad Probabilística de Casos</span>
+            </div>
+          </div>
+
+          <div class="p-3 bg-[#fa5955]/10 border border-[#fa5955]/30 rounded-xl">
+            <div class="flex items-center gap-2 text-[#5c0008] text-xs font-bold mb-1">
+              <span class="material-symbols-outlined text-sm">notifications_active</span>
+              Recomendación de Contingencia Activa
+            </div>
+            <p class="text-[11px] text-[#5c0008]/80 leading-relaxed">
+              Reforzar el suministro de nebulizaciones y broncodilatadores en el Centro de Salud La Pola antes del viernes próximo.
+            </p>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- Matriz de Patologías Monitoreadas y Probabilidad de Brote Futuro -->
+    <section class="bg-white rounded-2xl p-6 sm:p-8 border border-[#c3c6d1]/40 shadow-soft space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h3 class="text-lg font-bold text-[#161616]">Matriz Territorial de Proyecciones por Cuadrante Urbano</h3>
+          <p class="text-xs text-[#757575]">Consolidado generado por la red neuronal con cruce de datos epidemiológicos distritales</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#f6f3f2] hover:bg-[#eae7e7] text-xs font-bold text-[#1a4480] border border-[#c3c6d1]/40 transition-colors">
+            <span class="material-symbols-outlined text-sm">file_download</span>
+            Exportar Informe Predictivo
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabla Estilizada de Proyecciones -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-[#c3c6d1]/40 text-[#757575] uppercase text-[10px] tracking-wider">
+              <th class="py-3 px-4 font-bold">Cuadrante / Sector</th>
+              <th class="py-3 px-4 font-bold">Enfermedad Primaria</th>
+              <th class="py-3 px-4 font-bold">Casos Actuales</th>
+              <th class="py-3 px-4 font-bold">Inferencia a 14 Días</th>
+              <th class="py-3 px-4 font-bold">Tendencia Neuronal</th>
+              <th class="py-3 px-4 font-bold">Nivel de Riesgo</th>
+              <th class="py-3 px-4 font-bold text-right">Acción Recomendada</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#c3c6d1]/20">
+            <!-- Fila 1 -->
+            <tr class="hover:bg-[#f6f3f2]/60 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-[#161616]">Zona A • Centro / Nororiental</td>
+              <td class="py-3.5 px-4 text-[#757575]">Infección Respiratoria Aguda</td>
+              <td class="py-3.5 px-4 font-bold text-[#1a4480]">84 casos</td>
+              <td class="py-3.5 px-4 font-extrabold text-[#cf3a3a]">128 casos (±12)</td>
+              <td class="py-3.5 px-4">
+                <span class="inline-flex items-center gap-1 font-bold text-[#cf3a3a]">
+                  <span class="material-symbols-outlined text-sm">trending_up</span> +52.3%
+                </span>
+              </td>
+              <td class="py-3.5 px-4">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-[#fa5955]/20 text-[#5c0008]">
+                  CRÍTICO
+                </span>
+              </td>
+              <td class="py-3.5 px-4 text-right">
+                <button class="font-bold text-[#1a4480] hover:underline">Activar Cerco</button>
+              </td>
+            </tr>
+
+            <!-- Fila 2 -->
+            <tr class="hover:bg-[#f6f3f2]/60 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-[#161616]">Zona C • Occidental / Río Chiquinquirá</td>
+              <td class="py-3.5 px-4 text-[#757575]">Dengue Clásico / Vectores</td>
+              <td class="py-3.5 px-4 font-bold text-[#1a4480]">32 casos</td>
+              <td class="py-3.5 px-4 font-extrabold text-[#0b5694]">39 casos (±5)</td>
+              <td class="py-3.5 px-4">
+                <span class="inline-flex items-center gap-1 font-bold text-[#0b5694]">
+                  <span class="material-symbols-outlined text-sm">trending_up</span> +21.8%
+                </span>
+              </td>
+              <td class="py-3.5 px-4">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-[#d7e2ff] text-[#284677]">
+                  MODERADO
+                </span>
+              </td>
+              <td class="py-3.5 px-4 text-right">
+                <button class="font-bold text-[#1a4480] hover:underline">Fumigación</button>
+              </td>
+            </tr>
+
+            <!-- Fila 3 -->
+            <tr class="hover:bg-[#f6f3f2]/60 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-[#161616]">Zona B • Barrio Obrero / Jardín Norte</td>
+              <td class="py-3.5 px-4 text-[#757575]">Gastroenteritis Aguda</td>
+              <td class="py-3.5 px-4 font-bold text-[#1a4480]">14 casos</td>
+              <td class="py-3.5 px-4 font-extrabold text-emerald-700">11 casos (±3)</td>
+              <td class="py-3.5 px-4">
+                <span class="inline-flex items-center gap-1 font-bold text-emerald-600">
+                  <span class="material-symbols-outlined text-sm">trending_down</span> -21.4%
+                </span>
+              </td>
+              <td class="py-3.5 px-4">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800">
+                  CONTROLADO
+                </span>
+              </td>
+              <td class="py-3.5 px-4 text-right">
+                <button class="font-bold text-[#757575] hover:underline">Monitoreo</button>
+              </td>
+            </tr>
+
+            <!-- Fila 4 -->
+            <tr class="hover:bg-[#f6f3f2]/60 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-[#161616]">Zona D • Periferia Rural / Veredas</td>
+              <td class="py-3.5 px-4 text-[#757575]">Zoonosis y Parasitosis</td>
+              <td class="py-3.5 px-4 font-bold text-[#1a4480]">9 casos</td>
+              <td class="py-3.5 px-4 font-extrabold text-[#757575]">10 casos (±2)</td>
+              <td class="py-3.5 px-4">
+                <span class="inline-flex items-center gap-1 font-bold text-[#757575]">
+                  <span class="material-symbols-outlined text-sm">remove</span> Estable
+                </span>
+              </td>
+              <td class="py-3.5 px-4">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-[#f0eded] text-[#757575]">
+                  BAJO
+                </span>
+              </td>
+              <td class="py-3.5 px-4 text-right">
+                <button class="font-bold text-[#757575] hover:underline">Brigada</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
