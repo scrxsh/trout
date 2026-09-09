@@ -27,7 +27,7 @@ describe('Graphs', () => {
       imports: [Graphs],
       providers: [provideHttpClient(), provideHttpClientTesting()]
     })
-    
+
     .overrideComponent(Graphs, {
       remove: { imports: [BaseChartDirective, Heatmap] },
       add: { imports: [MockBaseChartDirective, MockHeatmap] }

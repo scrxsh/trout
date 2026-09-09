@@ -67,10 +67,10 @@ export class Events {
     const tipo = this.filtroTipo();
     const estado = this.filtroEstado();
     const alertas = this.alertasResource.value() ?? [];
-    const idDestacadasMostrads = new Set(this.alertasDestacadas().map(a => a.id));
+    const idDestacadasMostradas = new Set(this.alertasDestacadas().map(a => a.id));
 
     return alertas
-          .filter((a) => !idDestacadasMostrads.has(a.id))
+          .filter((a) => !idDestacadasMostradas.has(a.id))
           .filter((a) => a.titulo.toLowerCase().includes(termino) || a.descripcion.toLowerCase().includes(termino))
           .filter((a) => tipo === 'Todas' || a.tipo === tipo)
           .filter((a) =>  estado === 'Todos' || a.estado === estado)
@@ -126,22 +126,6 @@ export class Events {
     });
   }
 
-  featuredCardClass(tipo: TipoAlerta): string {
-    const map: Record<TipoAlerta, string> = {
-      Critica: 'featured-card--red',
-      Advertencia: 'featured-card--yellow',
-      Informativa: 'featured-card--green',
-    };
-    return map[tipo];
-  }
 
-  iconPath(tipo: TipoAlerta): string {
-    const paths: Record<TipoAlerta, string> = {
-      Critica: 'M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z',
-      Advertencia: 'M12 10.5v3.75m0 0h.008v.008H12v-.008zm.375-9.75a9 9 0 110 18 9 9 0 010-18zm0 0V3m0 1.5v.75',
-      Informativa: 'M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z',
-    };
-    return paths[tipo];
-  }
 
 }

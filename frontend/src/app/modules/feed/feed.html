@@ -17,7 +17,7 @@
         <div class="h-64 relative overflow-hidden">
           <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" [ngSrc]="noticia.urlImg" fill>
           <div class="absolute inset-0 bg-linear-to-t from-on-background/60 to-transparent"></div>
-          <div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container px-4 py-1.5 rounded-full text-xs uppercase tracking-wider font-bold shadow-sm backdrop-blur-md">{{ noticia.titulo }}</div>
+          <div class="absolute top-4 left-4 px-4 py-1.5 rounded-full text-xs uppercase tracking-wider font-bold shadow-sm backdrop-blur-md" [class]="($index % 2 !== 0) ? 'bg-secondary text-on-secondary' : 'bg-primary text-on-primary'">{{ noticia.titulo }}</div>
         </div>
         <div class="p-8 flex flex-col flex-1">
           <h3 class="text-2xl font-headline font-bold text-on-surface mb-4 leading-tight group-hover:text-primary">{{ noticia.descripcion }}</h3>
