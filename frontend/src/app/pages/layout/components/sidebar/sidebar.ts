@@ -44,7 +44,7 @@ export class Sidebar {
 
   protected readonly navActive = computed(() => {
     const active = `${this.shared()} bg-primary-container/55 text-primary rounded-2xl shadow-sm`;
-    return this.sidebarService.collapsed() ? active : `${active} ml-2`;
+    return this.sidebarService.collapsed() ? active : `${active} mr-1`;
   });
 
   protected getItemClass(isActive: boolean): string {

@@ -2,11 +2,15 @@
 
 
 .sidebar-container {
-    @apply flex flex-col fixed left-0 top-0 py-8 space-y-6 bg-surface h-screen w-64 rounded-4xl z-50;
+    @apply flex flex-col fixed left-0 top-0 py-8 space-y-6 bg-surface h-screen w-1/9 rounded-lg z-50;
 }
 
 .sidebar-container.collapsed {
-    @apply w-25 px-0 items-center;
+    @apply w-1/30 px-0 items-center;
+}
+
+.button-collapsed {
+  @apply cursor-pointer mt-1 size-7 hover:bg-outline-variant/20 rounded-lg transition-all duration-200 text-shadow-on-surface hover:text-primary
 }
 
 .footer-sidebar {
