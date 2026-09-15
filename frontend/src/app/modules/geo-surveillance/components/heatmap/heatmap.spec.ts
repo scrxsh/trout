@@ -11,7 +11,7 @@ describe('Heatmap', () => {
     await TestBed.configureTestingModule({
       imports: [Heatmap],
       providers: [
-        provideHttpClient(),           
+        provideHttpClient(),
         provideHttpClientTesting()
       ]
     }).compileComponents();

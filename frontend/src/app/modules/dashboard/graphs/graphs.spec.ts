@@ -5,7 +5,7 @@ import { Component, Directive, Input } from '@angular/core';
 
 import { Graphs } from './graphs';
 import { BaseChartDirective } from 'ng2-charts';
-import { Heatmap } from './heatmap/heatmap';
+
 
 
 @Directive({ selector: 'canvas[baseChart]', standalone: true })
@@ -29,7 +29,7 @@ describe('Graphs', () => {
     })
 
     .overrideComponent(Graphs, {
-      remove: { imports: [BaseChartDirective, Heatmap] },
+      remove: { imports: [BaseChartDirective] },
       add: { imports: [MockBaseChartDirective, MockHeatmap] }
     })
     .compileComponents();

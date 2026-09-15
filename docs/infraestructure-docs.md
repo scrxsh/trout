@@ -1,32 +1,15 @@
-## Plugins de los Charts (Frontend)
+# Dockerizar el proyecto
 
-Leer la documentación correspondiente a los plugins de [Chart.JS][1] en Angular[^2]
+## A. Dockerizar Spring Boot
 
-**Anotaciones en los gráficos**:
+### 1. Compilar el proyecto
 
-```bash
-npm install chartjs-plugin-annotation
-```
-Docs: https://www.chartjs.org/chartjs-plugin-annotation/master/
+Primero, compilar el proyecto Spring Boot y generar el archivo `.jar` utilizando Maven, esto reescribe si existe ya un .jar (Hacerlo siempre)
 
-
-[^2]: Recordar que siempre es necesario registrarlos con *Chart.register(plugin)*
-
-
-## Imagen docker de Spring Boot
-
-
-
-# Dockerizar Spring Boot
-
-## 1. Compilar el proyecto
-
-Primero, compilar el proyecto Spring Boot y generar el archivo `.jar` utilizando Maven.
-
-> Se debe tener Maven instalado o utilizar el Maven Wrapper incluido en el proyecto.
+> Se debe tener Maven instalado junto a la versión de Java que requiera el proyecto en el SO base.
 
 ```bash
-./mvnw clean package
+mvn clean package
 ```
 
 El archivo `.jar` se generará dentro de:
@@ -37,27 +20,22 @@ target/
 
 ---
 
-## 2. Crear el Dockerfile
+### 2. Crear el Dockerfile
 
-Crear un archivo llamado `Dockerfile` en la raíz del proyecto, desde el IDE, con el siguiente contenido base:
+Crear un archivo llamado `Dockerfile` en la raíz del proyecto backend, desde el IDE, con el siguiente contenido base:
 
 ```dockerfile
-FROM amazoncorretto:21-alpine
-
+FROM amazoncorretto:v
 ARG JAR_FILE=target/*.jar
-
 COPY ${JAR_FILE} app.jar
-
 RUN addgroup -S spring && adduser -S spring -G spring
-
 USER spring:spring
-
 ENTRYPOINT ["java","-jar","/app.jar"]
 ```
 
-### Descripción
+#### Explicación de los comandos
 
-* `FROM`: utiliza Amazon Corretto 21 como imagen base.
+* `FROM`: utiliza Amazon Corretto de Java como imagen base. (Se puede usar cualquier JDK)
 * `ARG JAR_FILE`: define la ubicación del archivo `.jar`.
 * `COPY`: copia el `.jar` dentro de la imagen como `app.jar`.
 * `RUN`: crea un usuario y grupo llamado `spring`.
@@ -66,7 +44,7 @@ ENTRYPOINT ["java","-jar","/app.jar"]
 
 ---
 
-## 3. Construir la imagen Docker
+### 3. Construir la imagen Docker
 
 Desde la raíz del proyecto, ejecutar:
 
@@ -75,6 +53,35 @@ sudo docker build -t nombre .
 ```
 
 > El `.` indica que Docker debe utilizar el directorio actual como contexto de construcción.
+
+#### 3.1 Conexión con la BD de MYSQL
+
+Se debe utilizar docker compose para ello, primeramente debemos crear un archivo .yml titulado **docker-compose.yml** en la raíz del proyecto. 
+
+
+
+```bash
+services:
+  db:
+    image: mysql:latest
+    container_name: nombre-contendor
+    environment:
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_DATABASE: 
+    ports:
+      - "3307:3306"
+  app:
+    build: .
+    container_name: var-store
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/tienda?allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Wilardo89+
+    depends_on:
+      - db
+```
 
 ---
 
@@ -125,4 +132,4 @@ sudo docker run -p 8080:8080 nombre
 
 
 
-[1]: https://www.chartjs.org/docs/latest/
+
