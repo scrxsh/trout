@@ -5,7 +5,6 @@ import { BaseChartDirective } from 'ng2-charts';
 //import { driver } from 'driver.js';
 
 
-
 import { ThemeService } from '../../../core/theme/services/theme.service';
 Chart.register(...registerables);
 
@@ -24,8 +23,9 @@ export class Graphs {
 
   private themeService = inject(ThemeService);
 
-  public barChartType: ChartType = 'bar';
-  public pieChartType: ChartType = 'pie';
+  public barChartType: 'bar' = 'bar';
+  public pieChartType: 'pie' = 'pie';
+  public lineChartType: 'line' = 'line';
 
   public barChartData: ChartData<'bar'> = {
   labels: [
@@ -48,7 +48,7 @@ export class Graphs {
         '#0b5694',
         '#9b2929',
         '#3b5d93'
-      ],
+      ]
     },
   ],
   };
@@ -63,26 +63,80 @@ export class Graphs {
     ],
   };
 
+  public lineChartData: ChartData<'line'> = {
+    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto'],
+    datasets: [{
+      data: [65, 59, 80, 81, 56, 55, 40, 82, 32],
+      fill: true,
+      borderColor: '#9b2929',
+      tension: 0.1
+    },
+  ],
+  }
 
-  public chartOptions = signal<ChartConfiguration['options']>({
+
+  public barOptions = signal<ChartConfiguration<'bar'>['options']>({
+    indexAxis: 'y',
     scales: {
-    x: {
-      ticks: {
-        color: this.themeService.isDark() ? '#ffffff' : '#000000'
+      x: {
+        ticks: {
+          color: this.themeService.isDark() ? '#ffffff' : '#000000'
+        }
+      },
+
+      y: {
+        ticks: {
+          color: this.themeService.isDark() ? '#ffffff' : '#000000'
+        },
+        suggestedMax: Math.max(...this.barChartData.datasets[0].data as number[]) + 50
       }
     },
-
-    y: {
-      ticks: {
-        color: this.themeService.isDark() ? '#ffffff' : '#000000'
+    elements: {
+      bar: {
+        borderRadius: 7
       }
-    }
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: {
+      duration: 1000,
+      easing: 'easeOutQuart',
+    },
+    plugins: {
+      legend: { display: false },
+    },
+  });
+
+  public pieOptions = signal<ChartConfiguration<'pie'>['options']>({
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: {
+      duration: 1000,
+      easing: 'easeOutQuart',
+    },
+    plugins: {
+      legend: { display: false },
+    },
+  });
+
+  public lineOptions = signal<ChartConfiguration<'line'>['options']>({
+    scales: {
+      x: {
+        ticks: {
+          color: this.themeService.isDark() ? '#ffffff' : '#000000'
+        }
+      },
+      y: {
+        ticks: {
+          display: false
+        }
+      }
   },
     responsive: true,
     maintainAspectRatio: false,
     animation: {
-      duration: 1000, // Tiempo de la animación (1 segundo)
-      easing: 'easeOutQuart', // Movimiento elegante (empieza rápido, termina lento)
+      duration: 1000,
+      easing: 'easeOutQuart',
     },
     plugins: {
       legend: { display: false },
@@ -93,7 +147,6 @@ export class Graphs {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
 
     this.isBrowser = isPlatformBrowser(this.platformId);
-
     afterNextRender(() => {
       //this.iniciarTour();
       Chart.defaults.font.family = 'Open Sans';
@@ -103,13 +156,19 @@ export class Graphs {
 
     effect(() => {
       const color = this.themeService.isDark() ? '#ffffff' : '#000000';
-
-      this.chartOptions.update(opts => ({
+      this.barOptions.update(opts => ({
         ...opts,
         scales: {
           ...opts?.scales,
           x: {...opts?.scales?.['x'], ticks: { color }},
           y: {...opts?.scales?.['y'], ticks: { color }},
+        },
+      }));
+      this.lineOptions.update(opts => ({
+        ...opts,
+        scales: {
+          ...opts?.scales,
+          x: {...opts?.scales?.['x'], ticks: { color }},
         },
       }));
     });

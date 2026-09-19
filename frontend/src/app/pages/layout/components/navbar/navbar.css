@@ -1,0 +1,33 @@
+.shake-left-right:hover{
+  animation:shake-left-right 1s linear both
+}
+
+@keyframes shake-left-right{
+
+  0%,100%{transform:rotate(0deg);
+    transform-origin:50% 50%
+  }
+
+  10%{transform:rotate(8deg)
+  }
+
+  20%,40%,60%{
+    transform:rotate(-10deg)
+  }
+
+  30%,50%,70%{
+    transform:rotate(10deg)
+  }
+  80%{
+    transform:rotate(-8deg)
+  }
+  90%{
+    transform:rotate(8deg)
+  }
+
+}
+
+
+.scale-up-horizontal-center{animation:scale-up-horizontal-center 0.35s} @keyframes scale-up-horizontal-center{0%{transform:scaleX(.2)}100%{transform:scaleX(1)}}
+
+.scale-down-center{animation:scale-down-center 0.4s; } @keyframes scale-down-center{0%{transform:scale(1)}100%{transform:scale(.5)}}

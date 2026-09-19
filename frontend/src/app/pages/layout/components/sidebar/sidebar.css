@@ -2,15 +2,19 @@
 
 
 .sidebar-container {
-    @apply flex flex-col fixed left-0 top-0 py-8 space-y-6 bg-surface h-screen w-1/9 rounded-lg z-50;
+    @apply flex flex-col fixed left-0 top-0 py-3.5 space-y-5 bg-surface h-screen w-1/9 z-50 rounded-r-lg border-outline/20 border transition-all duration-50 ease-[cubic-bezier(0.4,0,0.2,1)];
 }
 
 .sidebar-container.collapsed {
     @apply w-1/30 px-0 items-center;
 }
 
-.button-collapsed {
+.button-no-collapsed {
   @apply cursor-pointer mt-1 size-7 hover:bg-outline-variant/20 rounded-lg transition-all duration-200 text-shadow-on-surface hover:text-primary
+}
+
+.button-collapsed {
+  @apply cursor-pointer mt-1 size-7 hover:bg-outline-variant/20 rounded-lg transition-all duration-200 text-secondary hover:text-on-secondary-container
 }
 
 .footer-sidebar {
@@ -29,3 +33,7 @@
     }
 }
 
+
+
+.slide-left{animation:slide-left 0.4s linear both}@keyframes slide-left{0%{transform:translateX(0)}100%{transform:translateX(-100px)}}
+.slide-right{animation:slide-right 0.4s linear both}@keyframes slide-right{0%{transform:translateX(0)}100%{transform:translateX(100px)}}

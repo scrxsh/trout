@@ -1,23 +1,23 @@
-<header class="sticky bg-surface/80 -my-3.5 mb-3.5 top-0 z-40 backdrop-blur-sm flex justify-between items-center px-9 py-6 shadow-[0_12px_32px_rgba(27,27,27,0.06)] rounded-2xl">
+<header class="sticky bg-surface/80 -my-3.5 mb-3.5 top-0 z-40 backdrop-blur-sm flex justify-between items-center px-9 py-2.5 shadow-[0_12px_32px_rgba(27,27,27,0.06)] rounded-2xl">
     <div class="flex items-center gap-8">
-      <div class="hidden lg:flex items-center gap-6 text-sm text-on-surface-variant font-medium">
+      <div class="flex items-center gap-6 text-sm text-on-surface-variant font-medium">
         <div class="flex items-center gap-1.5">
-          <span class="material-symbols-outlined">location_on</span>
+          <span class="material-symbols-outlined text-xl!">location_on</span>
           <span>Chiquinquirá, Colombia</span>
         </div>
       <div class="flex items-center gap-1.5 border-l border-outline-variant/30 pl-6">
-        <span class="material-symbols-outlined text">cloud</span>
+        <span class="material-symbols-outlined text-xl!">cloud</span>
         <span>16°C • Nublado</span>
       </div>
       <div class="flex items-center gap-1.5 border-l border-outline-variant/30 pl-6">
-      <span class="material-symbols-outlined text-[18px]">map</span>
+      <span class="material-symbols-outlined text-xl!">activity_zone</span>
       <span>Sector: Norte</span>
       </div>
       </div>
     </div>
-    <div class="flex items-center gap-3">
-      <button class="p-2 rounded-full hover:bg-surface-container-highest transition-colors relative flex items-center justify-center" (click)="cambiarTema()">
-        <span class="material-symbols-outlined">
+    <div class="flex items-center gap-3 cursor-pointer">
+      <button class="p-1 rounded-full hover:bg-surface-container-high transition-colors relative flex items-center justify-center" (click)="cambiarTema()">
+        <span class="material-symbols-outlined text-xl!" [ngClass]="{'scale-up-horizontal-center' : shakeDarkMode() }" (click)="startShakeDarkMode()" (animationend)="shakeDarkMode.set(false)">
           @if(isDarkMode()){
             wb_sunny
           }@else {
@@ -25,12 +25,12 @@
           }
         </span>
       </button>
-      <button class="p-2 rounded-full hover:bg-surface-container-highest transition-colors relative flex items-center justify-center">
-        <span class="material-symbols-outlined">notifications</span>
-        <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-secondary rounded-full"></span>
+      <button class="p-1 rounded-full hover:bg-surface-container-high transition-colors relative flex items-center justify-center">
+        <span class="material-symbols-outlined shake-left-right text-xl!">notifications</span>
+        <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-secondary rounded-full animate-ping"></span>
       </button>
-      <button class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:opacity-90 transition-opacity">
-        <span class="material-symbols-outlined text-sm">person</span>
+      <button class="w-7 h-7 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer">
+        <span class="material-symbols-outlined text-xl!" [ngClass]="{'scale-down-center' : shakeUser() }" (click)="startShakeUser()" (animationend)="shakeUser.set(false)">person</span>
       </button>
     </div>
 </header>

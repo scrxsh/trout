@@ -1,15 +1,14 @@
-<div class="flex flex-wrap gap-5 w-full pt-2">
+<div class="flex flex-wrap gap-5 w-full pt-2 mb-2">
   @if(isBrowser){
     <div class="grid grid-cols-3 gap-6 w-full h-1/6">
-        <!--GRAFICO DE BARRAS-->
         <div class="chart-card rounded-2xl" id="barras">
           <h2 class="chart-title">Reportes por barrios</h2>
-          <p class="chart-subtitle">Reportes realizados por cada barrio de la ciudad</p>
+          <p class="chart-subtitle">Reportes realizados por cada barrio de la ciudad.</p>
               <div class="chart-wrapper">
               <canvas
                   baseChart
                   [data]="barChartData"
-                  [options]="chartOptions()"
+                  [options]="barOptions()"
                   [type]="barChartType">
               </canvas>
               </div>
@@ -17,25 +16,25 @@
         <!--GRAFICO DE PASTEL-->
         <div class="chart-card rounded-2xl" id="pastel">
           <h2 class="chart-title">Distribución de Enfermedades</h2>
-          <p class="chart-subtitle">Proporción de casos por tipo de enfermedad</p>
+          <p class="chart-subtitle">Proporción de casos por tipo de enfermedad.</p>
               <div class="chart-wrapper">
               <canvas
                   baseChart
                   [data]="pieChartData"
-                  [options]="chartOptions()"
+                  [options]="pieOptions()"
                   [type]="pieChartType">
               </canvas>
               </div>
         </div>
-        <div class="chart-card rounded-2xl" id="barras">
-          <h2 class="chart-title">Reportes por barrios</h2>
-          <p class="chart-subtitle">Reportes realizados por cada barrio de la ciudad</p>
+        <div class="chart-card rounded-2xl" id="lineas">
+          <h2 class="chart-title">Tendencias mensuales</h2>
+          <p class="chart-subtitle">Tendencias de enfermedades virales y bacterianas en Chiquinquirá.</p>
               <div class="chart-wrapper">
               <canvas
                   baseChart
-                  [data]="barChartData"
-                  [options]="chartOptions()"
-                  [type]="barChartType">
+                  [data]="lineChartData"
+                  [options]="lineOptions()"
+                  [type]="lineChartType">
               </canvas>
               </div>
         </div>

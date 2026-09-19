@@ -1,0 +1,31 @@
+<div class="flex flex-wrap gap-5 w-full pt-2 mb-2">
+  @if(isBrowser){
+    <div class="grid grid-cols-3 gap-6 w-full h-1/6">
+        <div class="chart-card rounded-2xl" id="barras">
+          <h2 class="chart-title">Matriz de Vulnerabilidad</h2>
+              <div class="chart-wrapper">
+              <canvas
+                  baseChart
+                  [data]="radarChartData"
+                  [options]="radarOptions()"
+                  [type]="radarChartType">
+              </canvas>
+              </div>
+        </div>
+        <app-table/>
+        <div class="chart-card rounded-2xl" id="dona">
+          <h2 class="chart-title">Clasificación de los casos</h2>
+          <p class="chart-subtitle">Número de posibles casos de enfermedades virales y bacterianas.</p>
+              <div class="chart-wrapper">
+              <canvas
+                  baseChart
+                  [data]="dChartData"
+                  [options]="dOptions()"
+                  [plugins]="chartPlugins"
+                  [type]="dChartType">
+              </canvas>
+              </div>
+        </div>
+    </div>
+  }
+</div>

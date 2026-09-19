@@ -1,14 +1,11 @@
-
 @reference "../../../../styles.css";
-
-
 
 .chart-card {
   @apply bg-surface p-5 shadow-card;
 
 }
 .chart-wrapper {
-  @apply w-full h-80
+  @apply w-full h-96
 }
 
 .chart-title {

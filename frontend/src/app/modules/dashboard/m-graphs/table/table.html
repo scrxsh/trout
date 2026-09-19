@@ -1,0 +1,29 @@
+<div class="w-full max-w-2xl bg-surface rounded-2xl p-8 shadow-[0_12px_32px_rgba(26,68,128,0.06)]">
+    <div class="flex items-start justify-between mb-6">
+      <div>
+        <h2 class="text-2xl font-bold text-primary tracking-tight">Factores Determinantes de Riesgo</h2>
+        <p class="text-sm text-on-background mt-0.5">Causas detonantes clasificadas por severidad e impacto comunitario</p>
+      </div>
+    </div>
+    <div class="space-y-5 my-2">
+
+      @for(fact of facts; track fact.id){
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-xl! font-semibold!" [ngClass]="stateColor[fact.state]">{{fact.icon}}</span>
+              <span class="text-sm font-semibold">{{fact.description}}</span>
+            </div>
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full border" [ngClass]="spanFact[fact.state]">{{fact.percent}}% ~ {{fact.state}}</span>
+          </div>
+          <div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+            <div class="h-full rounded-full transition-all duration-700" [style.width.%]="fact.percent" [ngClass]="bgStateColor[fact.state]"></div>
+          </div>
+        </div>
+      }
+    <div class="mt-8 pt-5 border-t border-outline/10 flex items-center justify-between text-xs">
+      <button class="font-bold text-tertiary flex items-center gap-1">
+        Ver plan de mitigación <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </button>
+    </div>
+  </div>

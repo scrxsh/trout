@@ -1,6 +1,6 @@
-<div class="min-h-screen bg-surface-container">
+<div class="min-h-screen bg-surface-container/40">
   <app-sidebar />
-  <div class="flex flex-col transition-all duration-300 ease-in-out min-h-screen" [class.ml-64]="!sidebarService.collapsed()" [class.ml-25]="sidebarService.collapsed()">
+  <div class="flex flex-col transition-all duration-300 ease-in-out min-h-screen" [ngClass]="collapsed() ? 'ml-15' : 'ml-52'">
     <main class="p-6 flex-1">
       <app-navbar />
         <router-outlet />

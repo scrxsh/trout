@@ -2,11 +2,12 @@ import { Component, inject, computed, ChangeDetectionStrategy } from '@angular/c
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LoginService } from '../../../../modules/auth/login/services/login-service';
 import { CollapsedSidebar } from '../../services/collapsed-sidebar';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-sidebar',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './sidebar.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './sidebar.css',
@@ -16,6 +17,10 @@ export class Sidebar {
 
   toggleSidebar() {
     this.sidebarService.toggle();
+  }
+
+  collapsed(): boolean {
+    return this.sidebarService.collapsed();
   }
 
   protected menuItems = [
