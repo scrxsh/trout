@@ -73,6 +73,7 @@ repomix-output.xml
 backend/*.sh
 .dockerignore
 Dockerfile
+docker-compose.yml
 
 # MySQL
 **/mysql-init
