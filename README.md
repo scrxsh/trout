@@ -1,7 +1,7 @@
 
 # Trout
 
-Este proyecto fue generado utilizando [Angular CLI](https://github.com/angular/angular-cli) versión 22+ y [Spring Boot](https://spring.io/projects/spring-boot) versión 4.1.0 creado con [Spring Initialzr](https://start.spring.io/) para el semillero SISLA de la Fundación Universitaria de San Gil, sede Chiquinquirá
+Este proyecto fue generado utilizando [Angular CLI](https://github.com/angular/angular-cli) versión 22+ y [Spring Boot](https://spring.io/projects/spring-boot) versión 4.1.1 creado con [Spring Initialzr](https://start.spring.io/) para el semillero SISLA de la Fundación Universitaria de San Gil, sede Chiquinquirá
 
 
 ## Servidor de desarrollo (Frontend)
@@ -16,11 +16,7 @@ Para iniciar un servidor de desarrollo local, ejecuta:
 ng serve -o
 ```
 
-Una vez que el servidor esté en ejecución, abre tu navegador y navega a http://localhost:4200/. La aplicación se recargará automáticamente cada vez que modifiques alguno de los archivos fuente. Luego se puede compartir la URL: 
-
-```bash
-npx tunnelmole 4200
-```
+Una vez que el servidor esté en ejecución, abre tu navegador y navega a http://localhost:4200/. La aplicación se recargará automáticamente cada vez que modifiques alguno de los archivos fuente.
 
 ### Generación de código
 
@@ -69,7 +65,7 @@ Angular CLI no incluye por defecto un framework de pruebas end-to-end, por lo qu
 Para más información sobre cómo usar Angular CLI, incluyendo referencias detalladas de los comandos, visita la página de [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).
 
 ## Backend
-Usar las [variables de entorno](https://www.mediafire.com/file/34if3zshk8jswlf/variables+entorno.txt/file) en IntellJIDEA
+Usar las [variables de entorno](https://www.mediafire.com/file/2nyl4714jr9s38u/v-entorno-ency.txt.gpg/file) en IntellJIDEA, desencriptar archivo en linux con gpg / gnupg. [Tuto](https://www.cyberciti.biz/tips/linux-how-to-encrypt-and-decrypt-files-with-a-password.html)
 
 Comandos para las llaves ([OPEN SSL](https://slproweb.com/products/Win32OpenSSL.html)), crear las llaves en la carpeta jwtKeys en resources (En windows instalarla y mandarla al path)
 ```bash

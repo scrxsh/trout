@@ -68,3 +68,11 @@ frontend/src/app/pages/pruebas/
 
 #Repomix
 repomix-output.xml 
+
+# Docker
+backend/*.sh
+.dockerignore
+Dockerfile
+
+# MySQL
+**/mysql-init

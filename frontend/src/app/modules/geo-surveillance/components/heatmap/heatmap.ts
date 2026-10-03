@@ -24,7 +24,7 @@ export class Heatmap {
   constructor() {
     afterNextRender(() => {
       if (isPlatformBrowser(this.platformId)) {
-        this.iniciarMapa();
+        this.iniciarMapa().catch(err => console.error('Mapa: fallo al iniciar', err));
       }
     });
   }

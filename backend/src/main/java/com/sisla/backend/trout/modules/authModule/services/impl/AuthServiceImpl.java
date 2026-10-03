@@ -23,8 +23,6 @@ public class AuthServiceImpl implements IAuthService {
     private IJWTUtilityService jwtUtiliyService;
     @Autowired
     private UserValidation userValidation;
-    @Autowired
-    private TwilioOTPService twilioOTPService;
 
     @Override
     public HashMap<String, String> login(LoginDTO login) throws Exception {

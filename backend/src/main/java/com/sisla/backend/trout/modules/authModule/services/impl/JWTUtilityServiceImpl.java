@@ -29,9 +29,9 @@ import java.util.Date;
 @Service
 public class JWTUtilityServiceImpl implements IJWTUtilityService {
 
-    @Value("classpath:jwtKeys/private_key.pem")
+    @Value("${spring.jwtKeys.privateKeyPath}")
     private Resource privateKeyResource;
-    @Value("classpath:jwtKeys/public_key.pem")
+    @Value("${spring.jwtKeys.publicKeyPath}")
     private Resource publicKeyResource;
 
     //Expiracion del token basicamente es pasar de dias a milisegundos que maneja date de Java

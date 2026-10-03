@@ -1,0 +1,39 @@
+services:
+  db:
+    image: mysql:latest
+    container_name: trout-db
+    env_file: .env
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ../backend
+    container_name: trout-backend
+    env_file: .env
+    ports:
+      - "8080:8080"
+    volumes:
+      - jwt_keys:/keys
+    depends_on:
+      db:
+        condition: service_healthy
+  
+  frontend:
+    build: ../frontend
+    container_name: trout-frontend
+    ports:
+      - "4200:4000"
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
+  jwt_keys:

@@ -10,14 +10,11 @@ export class LeafletService {
   async cargarLeaflet(): Promise<any>{
 
     if(!this.leafletPromise){
-      this.leafletPromise = (async() => {
-        //Importaciones dinamicas
-        const L = await import('leaflet');
-        //Preparar la importacion del plugin
+      this.leafletPromise = (async () => {
+        const mod: any = await import('leaflet');
+        const L = mod.default ?? mod;
         (window as any).L = L;
-        //Plugin 
         await import('leaflet.heat');
-
         return L;
       })();
     }
